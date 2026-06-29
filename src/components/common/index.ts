@@ -3,3 +3,4 @@ export { SectionTitle, type SectionTitleProps } from './SectionTitle';
 export { SectionSubtitle, type SectionSubtitleProps } from './SectionSubtitle';
 export { AnimatedText, type AnimatedTextProps } from './AnimatedText';
 export { Reveal, type RevealProps } from './Reveal';
+export { FloatingBlobs } from './FloatingBlobs';

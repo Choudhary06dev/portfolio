@@ -2,7 +2,7 @@ export type ProjectStatus = 'planning' | 'in-progress' | 'completed' | 'maintain
 
 /**
  * Scalable domain model for portfolio projects.
- * Supports features like slugs, categories, feature flags, and roles.
+ * Supports features like slugs, categories, feature flags, roles, key highlights, and complete case study fields.
  */
 export interface ProjectType {
   id: string;
@@ -22,4 +22,16 @@ export interface ProjectType {
   year: number;
   role: string;
   company?: string;
+  highlights?: readonly string[];
+  
+  // Case Study specific fields
+  overview?: string;
+  problem?: string;
+  solution?: string;
+  architecture?: string;
+  features?: readonly string[];
+  gallery?: readonly string[];
+  challenges?: string;
+  results?: string;
+  badgeLabel?: string; // e.g. "⭐ Featured", "🤖 AI Powered", etc.
 }

@@ -32,7 +32,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={disabled || isLoading}
         aria-busy={isLoading}
         className={cn(
-          'inline-flex cursor-pointer items-center justify-center rounded-md font-sans text-sm font-medium tracking-wide transition-all select-none focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50',
+          'inline-flex cursor-pointer items-center justify-center rounded-md font-sans text-sm font-medium tracking-wide transition-all duration-300 ease-out select-none focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50',
           {
             /* Variants mapping */
             'bg-primary hover:bg-primary-hover focus-visible:outline-primary text-white shadow-sm':

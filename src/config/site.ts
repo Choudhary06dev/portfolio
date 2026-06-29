@@ -6,13 +6,13 @@ import { type SiteConfigType } from '@/types/navigation';
  */
 export const siteConfig: SiteConfigType = {
   siteName: 'Amjad | Principal Frontend Architect & Senior React Engineer',
-  shortName: 'Amjad',
+  shortName: 'Amjad Subhani ',
   description: 'Portfolio of Amjad, a Principal Frontend Architect and Senior React Engineer.',
   author: 'Amjad',
-  email: 'amjad@example.com',
+  email: 'amjad.softdev@gmail.com',
   github: 'https://github.com/choudhary06dev',
   linkedin: 'https://linkedin.com/in/choudhary06dev',
   resumeUrl: '/Amjad_Resume.pdf',
   copyright: `© ${new Date().getFullYear()} Amjad. All rights reserved.`,
-  logoText: 'Amjad.dev',
+  logoText: 'Amjad Subhani ',
 };

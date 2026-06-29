@@ -8,6 +8,7 @@ export interface CurrentRoleType {
   company: string;
   period: string;
   description: string;
+  highlights: readonly string[];
 }
 
 /**

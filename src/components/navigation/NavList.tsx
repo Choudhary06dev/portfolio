@@ -23,17 +23,23 @@ export const NavList: React.FC<NavListProps> = ({
 }) => {
   // Watch active section intersections automatically
   const activeSection = useActiveSection(['hero', 'about', 'experience', 'projects', 'contact']);
+  const [hoveredId, setHoveredId] = React.useState<string | null>(null);
 
   return (
     <nav aria-label="Main Navigation" className={className}>
       <ul
+        onMouseLeave={() => setHoveredId(null)}
         className={cn('flex gap-2', {
           'flex-row items-center': direction === 'horizontal',
           'w-full flex-col items-stretch': direction === 'vertical',
         })}
       >
         {navigationItems.map((item) => (
-          <li key={item.id} className={direction === 'vertical' ? 'w-full' : undefined}>
+          <li
+            key={item.id}
+            className={direction === 'vertical' ? 'w-full' : undefined}
+            onMouseEnter={() => setHoveredId(item.id)}
+          >
             <NavItem
               id={item.id}
               label={item.label}
@@ -41,6 +47,7 @@ export const NavList: React.FC<NavListProps> = ({
               type={item.type}
               onClick={onItemClick}
               isActive={item.id === activeSection}
+              isHovered={item.id === hoveredId}
               className={cn(itemClassName, {
                 'block w-full': direction === 'vertical',
               })}

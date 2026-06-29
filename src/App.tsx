@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AppProviders } from '@/providers';
 import { AppLayout } from '@/layouts';
-import { Home } from '@/pages';
+import { Home, ProjectDetail } from '@/pages';
 
 /**
  * Root Application Router & Component Layouts.
@@ -15,6 +15,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<AppLayout />}>
             <Route index element={<Home />} />
+            <Route path="projects/:slug" element={<ProjectDetail />} />
           </Route>
         </Routes>
       </BrowserRouter>
