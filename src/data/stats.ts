@@ -10,9 +10,29 @@ export const stats: StatsType = {
   repositoriesCount: 0,
   technologiesMastered: 0,
   items: [
-    { value: '2+ Years', label: 'Experience' },
-    { value: 'Laravel', label: 'Primary Stack' },
-    { value: 'React', label: 'Frontend' },
-    { value: 'AI Solutions', label: 'Specialization' },
+    {
+      icon: 'Briefcase',
+      value: '2+ Years',
+      label: 'Experience',
+      description: 'Years of hands-on dev work',
+    },
+    {
+      icon: 'Code',
+      value: 'Laravel',
+      label: 'Primary Stack',
+      description: 'Backend core and REST APIs',
+    },
+    {
+      icon: 'Atom',
+      value: 'React',
+      label: 'Frontend',
+      description: 'Single page app UI libraries',
+    },
+    {
+      icon: 'Sparkles',
+      value: 'AI Solutions',
+      label: 'Specialization',
+      description: 'Agentic workflows and integrations',
+    },
   ],
 };

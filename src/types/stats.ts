@@ -1,6 +1,8 @@
 export interface StatItemType {
+  icon: string; // Icon identifier key mapping to Lucide component
   value: string;
   label: string;
+  description: string;
 }
 
 /**
