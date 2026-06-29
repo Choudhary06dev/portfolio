@@ -41,7 +41,7 @@ export const HeroSection: React.FC = () => {
     <Section
       id="hero"
       variant="default"
-      className="pt-12 pb-16 md:pt-16 md:pb-24 relative overflow-hidden flex flex-col justify-start"
+      className="pt-6 pb-16 md:pt-10 md:pb-24 relative overflow-hidden flex flex-col justify-start"
     >
       {/* Background Decorative Glow, Grid & Micro-texture */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,var(--color-primary-hover)_0%,transparent_45%)] opacity-[0.08] pointer-events-none" />
