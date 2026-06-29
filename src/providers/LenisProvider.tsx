@@ -37,9 +37,5 @@ export const LenisProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     };
   }, []);
 
-  return (
-    <LenisContext.Provider value={lenisRef}>
-      {children}
-    </LenisContext.Provider>
-  );
+  return <LenisContext.Provider value={lenisRef}>{children}</LenisContext.Provider>;
 };

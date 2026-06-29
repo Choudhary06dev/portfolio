@@ -1,0 +1,67 @@
+@theme {
+  /* Font Family Mappings */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Outfit', 'Inter', system-ui, sans-serif;
+  --font-mono: 'Fira Code', ui-monospace, monospace;
+
+  /* Size, Line-Height, & Letter-Spacing Composite Tokens */
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1.5;
+  --text-xs--letter-spacing: 0.01em;
+
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.43;
+  --text-sm--letter-spacing: 0.005em;
+
+  --text-base: 1rem;
+  --text-base--line-height: 1.5;
+  --text-base--letter-spacing: 0;
+
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.55;
+  --text-lg--letter-spacing: -0.01em;
+
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 1.5;
+  --text-xl--letter-spacing: -0.015em;
+
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 1.33;
+  --text-2xl--letter-spacing: -0.02em;
+
+  --text-3xl: 1.875rem;
+  --text-3xl--line-height: 1.27;
+  --text-3xl--letter-spacing: -0.025em;
+
+  --text-4xl: 2.25rem;
+  --text-4xl--line-height: 1.22;
+  --text-4xl--letter-spacing: -0.03em;
+
+  --text-5xl: 3rem;
+  --text-5xl--line-height: 1.17;
+  --text-5xl--letter-spacing: -0.035em;
+
+  --text-6xl: 3.75rem;
+  --text-6xl--line-height: 1.13;
+  --text-6xl--letter-spacing: -0.04em;
+
+  /* Font Weight Aliases */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Common Line Heights */
+  --leading-tight: 1.2;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+
+  /* Common Letter Spacings */
+  --tracking-tighter: -0.05em;
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.025em;
+}

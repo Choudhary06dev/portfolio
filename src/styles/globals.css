@@ -1,0 +1,49 @@
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    height: 100%;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100%;
+    margin: 0;
+  }
+
+  /* Custom Selection Highlight Color */
+  ::selection {
+    background-color: oklch(from var(--primary) l c h / 0.2);
+    color: var(--primary);
+  }
+
+  /* Focus Ring Global Rules */
+  *:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  /* Custom Scrollbar Styles */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: var(--radius-full);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--border-light);
+  }
+}

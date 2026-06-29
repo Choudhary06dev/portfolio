@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { ThemeContext, type ThemeContextType } from '@/context/ThemeContext';
+import { ThemeContext, type ThemeContextType } from '@/providers/ThemeProvider';
 
 /**
  * Custom hook to access current theme state and toggler.

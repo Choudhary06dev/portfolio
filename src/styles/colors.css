@@ -1,0 +1,76 @@
+:root {
+  /* Semantic OKLCH Colors - Default Dark Mode */
+  --background: oklch(0.1 0.01 250); /* Deep Slate Black */
+  --foreground: oklch(0.95 0.015 250); /* Soft white */
+
+  --surface: oklch(0.14 0.015 250); /* Surface elements (e.g. Cards) */
+  --surface-hover: oklch(0.18 0.015 250);
+
+  --card: oklch(0.12 0.012 250);
+  --card-hover: oklch(0.16 0.015 250);
+
+  --border: oklch(0.22 0.015 250); /* Slate divider outlines */
+  --border-light: oklch(0.16 0.01 250);
+
+  --primary: oklch(0.65 0.22 280); /* High-end Violet Primary */
+  --primary-hover: oklch(0.58 0.22 280);
+
+  --secondary: oklch(0.75 0.14 310); /* Secondary Lavender */
+  --accent: oklch(0.68 0.18 340); /* Magenta/Pink glow */
+
+  --success: oklch(0.72 0.18 140); /* Emerald Green */
+  --warning: oklch(0.78 0.16 80); /* Soft Amber */
+  --danger: oklch(0.62 0.21 25); /* Crimson Red */
+
+  --muted: oklch(0.16 0.012 250);
+  --muted-foreground: oklch(0.62 0.02 250); /* Muted Slate Text */
+}
+
+.light {
+  /* Semantic OKLCH Colors - Future Light Mode Architecture */
+  --background: oklch(0.99 0.005 250); /* Pure off-white background */
+  --foreground: oklch(0.16 0.015 250); /* Solid charcoal text */
+
+  --surface: oklch(0.96 0.008 250);
+  --surface-hover: oklch(0.92 0.01 250);
+
+  --card: oklch(0.98 0.006 250);
+  --card-hover: oklch(0.94 0.008 250);
+
+  --border: oklch(0.88 0.01 250);
+  --border-light: oklch(0.94 0.005 250);
+
+  --primary: oklch(0.58 0.22 280);
+  --primary-hover: oklch(0.52 0.22 280);
+
+  --secondary: oklch(0.68 0.14 310);
+  --accent: oklch(0.62 0.18 340);
+
+  --success: oklch(0.65 0.18 140);
+  --warning: oklch(0.74 0.16 80);
+  --danger: oklch(0.56 0.21 25);
+
+  --muted: oklch(0.94 0.008 250);
+  --muted-foreground: oklch(0.48 0.015 250);
+}
+
+@theme {
+  /* Dynamic binding to Tailwind utility classes (e.g. bg-primary, text-muted-foreground) */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-border: var(--border);
+  --color-border-light: var(--border-light);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+}

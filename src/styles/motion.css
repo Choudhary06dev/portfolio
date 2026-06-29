@@ -1,0 +1,15 @@
+@theme {
+  /* Transition Timing Durations */
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --duration-hover: 200ms;
+  --duration-page: 350ms;
+
+  /* Transition Easing Curves */
+  --ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Spring Simulation Bezier Mappings (for non-Framer fallback styles) */
+  --ease-bounce-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}

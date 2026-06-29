@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+@import 'tailwindcss';
+@import './colors.css';
+@import './typography.css';
+@import './spacing.css';
+@import './radius.css';
+@import './shadows.css';
+@import './breakpoints.css';
+@import './motion.css';
+@import './theme.css';
+@import './globals.css';

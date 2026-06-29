@@ -1,29 +1,24 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ThemeProvider } from '@/context/ThemeContext';
-import { LenisProvider } from '@/context/LenisContext';
-import RootLayout from '@/components/layout/RootLayout';
-import Home from '@/pages/Home';
+import { AppProviders } from '@/providers';
+import { AppLayout } from '@/layouts';
+import { Home } from '@/pages';
 
 /**
- * Main Application Component.
- * Integrates Context Providers (Theme, Scroll) and Router configurations.
+ * Root Application Router & Component Layouts.
+ * Integrates global layout wrapper and route endpoints within AppProviders wrapper.
  */
 const App: React.FC = () => {
   return (
-    <ThemeProvider>
-      <LenisProvider>
-        <BrowserRouter>
-          <Routes>
-            {/* Main Application Routes inside RootLayout */}
-            <Route path="/" element={<RootLayout />}>
-              <Route index element={<Home />} />
-              {/* Future sub-pages or details routes can be added here */}
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </LenisProvider>
-    </ThemeProvider>
+    <AppProviders>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<AppLayout />}>
+            <Route index element={<Home />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </AppProviders>
   );
 };
 

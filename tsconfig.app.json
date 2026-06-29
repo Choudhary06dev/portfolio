@@ -18,7 +18,26 @@
     /* Strict Mode and Path Resolution */
     "strict": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@": ["./src"],
+      "@/*": ["./src/*"],
+      "@/components": ["./src/components"],
+      "@/components/*": ["./src/components/*"],
+      "@/sections": ["./src/sections"],
+      "@/sections/*": ["./src/sections/*"],
+      "@/pages": ["./src/pages"],
+      "@/pages/*": ["./src/pages/*"],
+      "@/hooks": ["./src/hooks"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/utils": ["./src/utils"],
+      "@/utils/*": ["./src/utils/*"],
+      "@/styles": ["./src/styles"],
+      "@/styles/*": ["./src/styles/*"],
+      "@/assets": ["./src/assets"],
+      "@/assets/*": ["./src/assets/*"],
+      "@/services": ["./src/services"],
+      "@/services/*": ["./src/services/*"],
+      "@/config": ["./src/config"],
+      "@/config/*": ["./src/config/*"]
     },
 
     /* Linting */

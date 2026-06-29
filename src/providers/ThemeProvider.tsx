@@ -27,7 +27,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   useEffect(() => {
     const root = window.document.documentElement;
-    
+
     // Manage Tailwind class-based dark mode
     if (theme === 'dark') {
       root.classList.add('dark');
@@ -36,14 +36,14 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       root.classList.remove('dark');
       root.style.colorScheme = 'light';
     }
-    
+
     localStorage.setItem('theme', theme);
   }, [theme]);
 
   // Synchronize with system preference updates if user hasn't explicitly set a preference
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    
+
     const handleSystemThemeChange = (e: MediaQueryListEvent) => {
       const hasExplicitPreference = localStorage.getItem('theme');
       if (!hasExplicitPreference) {

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef } from 'react';
-import { LenisContext } from '@/context/LenisContext';
+import { LenisContext } from '@/providers/LenisProvider';
 import Lenis from 'lenis';
 
 /**
