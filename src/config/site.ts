@@ -13,6 +13,6 @@ export const siteConfig: SiteConfigType = {
   github: 'https://github.com/choudhary06dev',
   linkedin: 'https://linkedin.com/in/choudhary06dev',
   resumeUrl: '/Amjad_Resume.pdf',
-  copyright: `© ${new Date().getFullYear()} Amjad. All rights reserved.`,
+  copyright: `© ${new Date().getFullYear()} Amjad Subhani. All rights reserved.`,
   logoText: 'Amjad Subhani ',
 };

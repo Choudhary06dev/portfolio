@@ -47,3 +47,36 @@
     background: var(--border-light);
   }
 }
+
+/* Sharp images rendering utility (Visual audit fix) */
+.sharp-img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+/* Footer Top Border Infinite Sliding Train Animation */
+@keyframes border-train {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.footer-border-train {
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    oklch(from var(--primary) l c h / 0.15) 20%,
+    oklch(from var(--primary) l c h / 0.7) 45%,
+    oklch(from var(--accent) l c h / 0.7) 55%,
+    oklch(from var(--primary) l c h / 0.15) 80%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: border-train 6s linear infinite;
+}

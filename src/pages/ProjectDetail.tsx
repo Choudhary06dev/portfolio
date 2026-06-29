@@ -177,10 +177,10 @@ export const ProjectDetail: React.FC = () => {
 
         {/* DETAILS GRID LAYOUT */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start w-full">
-          
+
           {/* Main Case Study Information Column (lg:col-span-8) */}
           <div className="lg:col-span-8 flex flex-col gap-10">
-            
+
             {/* 1. Overview */}
             {project.overview && (
               <Reveal direction="up" delay={0.1} className="space-y-4">
@@ -257,7 +257,7 @@ export const ProjectDetail: React.FC = () => {
 
           {/* Sidebar / Highlights & Gallery Column (lg:col-span-4) */}
           <div className="lg:col-span-4 flex flex-col gap-10 lg:sticky lg:top-24">
-            
+
             {/* Key Features widget list */}
             {project.features && project.features.length > 0 && (
               <Reveal direction="up" delay={0.2}>
@@ -293,7 +293,7 @@ export const ProjectDetail: React.FC = () => {
                         src={img}
                         alt={`${project.title} Interface Screenshot ${idx + 1}`}
                         loading="lazy"
-                        className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover/img:scale-105"
+                        className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover/img:scale-[1.02] sharp-img"
                       />
                     </div>
                   ))}

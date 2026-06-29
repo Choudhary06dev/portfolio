@@ -135,7 +135,7 @@ export const ExperienceSection: React.FC = () => {
   const currentRole = experience.find((exp) => !exp.endDate) || experience[0];
 
   return (
-    <Section id="experience" className="pt-16 pb-8 md:pt-24 md:pb-12 relative overflow-hidden">
+    <Section id="experience" className="py-16 md:py-24 relative overflow-hidden">
       {/* Background Decorative Mesh & Grids */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_bottom_right,var(--color-primary-hover)_0%,transparent_35%)] opacity-[0.03] pointer-events-none" />
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,var(--color-accent-hover)_0%,transparent_35%)] opacity-[0.02] pointer-events-none" />
@@ -208,7 +208,7 @@ export const ExperienceSection: React.FC = () => {
                       className="p-4 rounded-lg border border-border/30 bg-surface/20 backdrop-blur-md flex flex-col gap-1.5 shadow-xs hover:border-primary/25 hover:shadow-md transition-all duration-300 ease-out group cursor-default"
                     >
                       <span className="text-2xl font-black text-foreground tracking-tight transition-colors duration-300 group-hover:text-primary leading-none">
-                        <CountUp to={8} suffix="+" />
+                        <CountUp to={10} suffix="+" />
                       </span>
                       <span className="text-[9px] text-muted-foreground/80 font-bold uppercase tracking-widest leading-none mt-1">
                         Projects Built

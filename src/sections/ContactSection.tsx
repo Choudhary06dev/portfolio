@@ -212,14 +212,14 @@ export const ContactSection: React.FC = () => {
                     whileHover={{ y: -8, scale: 1.02 }}
                     whileTap={{ scale: 0.97 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                    className={`group relative flex items-center gap-3.5 p-3.5 rounded-xl border border-border/25 bg-surface/10 backdrop-blur-xl transition-all duration-300 ease-out ${method.hoverBorder} ${method.hoverGlow} cursor-pointer overflow-hidden`}
+                    className={`group relative flex items-center gap-3.5 p-3.5 rounded-xl border border-border bg-surface/10 backdrop-blur-xl transition-all duration-300 ease-out ${method.hoverBorder} ${method.hoverGlow} cursor-pointer overflow-hidden`}
                     aria-label={method.label}
                   >
                     {/* Gradient border shimmer on hover */}
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
                     {/* Icon container with gradient background */}
-                    <div className={`relative flex-shrink-0 p-2.5 rounded-lg bg-gradient-to-br from-foreground/[0.03] to-foreground/[0.01] border border-border/15 ${method.iconColor} transition-all duration-300`}>
+                    <div className={`relative flex-shrink-0 p-2.5 rounded-lg bg-gradient-to-br from-foreground/[0.03] to-foreground/[0.01] border border-border/50 ${method.iconColor} transition-all duration-300`}>
                       {method.icon}
                     </div>
 
@@ -253,7 +253,7 @@ export const ContactSection: React.FC = () => {
               whileHover={{ y: -8, scale: 1.015 }}
               whileTap={{ scale: 0.985 }}
               transition={{ type: 'spring', stiffness: 260, damping: 22 }}
-              className="relative group overflow-hidden rounded-2xl p-[1px] bg-gradient-to-tr from-primary/15 via-border/40 to-accent/15 hover:from-primary/35 hover:to-accent/35 transition-all duration-300 ease-out shadow-sm hover:shadow-[0_12px_50px_rgba(139,92,246,0.12)]"
+              className="relative group overflow-hidden rounded-2xl p-[1px] bg-gradient-to-tr from-primary/15 via-border to-accent/15 hover:from-primary/35 hover:to-accent/35 transition-all duration-300 ease-out shadow-sm hover:shadow-[0_12px_50px_rgba(139,92,246,0.12)]"
             >
               {/* Back glow */}
               <div className="absolute -inset-16 rounded-full bg-gradient-to-tr from-primary/5 to-accent/5 opacity-15 blur-3xl group-hover:opacity-40 transition-opacity duration-700 pointer-events-none" />
@@ -302,7 +302,7 @@ export const ContactSection: React.FC = () => {
                     <Button
                       variant="outline"
                       onClick={() => handleOpenLink(whatsappUrl)}
-                      className="w-full text-xs font-bold h-10 tracking-wider uppercase rounded-lg border-border/30 hover:border-emerald-500/25 hover:text-emerald-500 hover:shadow-[0_6px_24px_rgba(37,211,102,0.1)] transition-all duration-300 ease-out"
+                      className="w-full text-xs font-bold h-10 tracking-wider uppercase rounded-lg border-border hover:border-emerald-500/25 hover:text-emerald-500 hover:shadow-[0_6px_24px_rgba(37,211,102,0.1)] transition-all duration-300 ease-out"
                     >
                       Chat on WhatsApp
                     </Button>
@@ -311,7 +311,7 @@ export const ContactSection: React.FC = () => {
                 </div>
 
                 {/* Trust Indicators */}
-                <div className="flex flex-col gap-2 pt-3 border-t border-border/10">
+                <div className="flex flex-col gap-2 pt-3 border-t border-border/45">
                   {[
                     'Usually replies within 24 hours',
                     'Open for Full-Time Roles',

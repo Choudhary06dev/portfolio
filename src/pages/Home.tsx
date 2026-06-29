@@ -25,7 +25,7 @@ const Home: React.FC = () => {
         // Wait minor duration for rendering components
         const timer = setTimeout(() => {
           if (lenis) {
-            lenis.scrollTo(targetElement, { offset: -70 });
+            lenis.scrollTo(targetElement, { offset: -20 });
           } else {
             targetElement.scrollIntoView({ behavior: 'smooth' });
           }

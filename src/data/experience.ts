@@ -35,8 +35,8 @@ export const experience: readonly ExperienceType[] = [
     company: 'Self-Employed / Freelance',
     position: 'Laravel + React Engineer',
     employmentType: 'freelance',
-    startDate: '2023-10',
-    endDate: '2024-03',
+    startDate: '2025-10',
+    endDate: '2026-05',
     location: 'Remote',
     description: 'Engineering high-performance SaaS applications, custom ERP consoles, and AI-driven solutions.',
     responsibilities: [

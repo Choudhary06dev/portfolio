@@ -67,7 +67,7 @@ export const ProjectsSection: React.FC = () => {
   };
 
   return (
-    <Section id="projects" className="pt-8 pb-16 md:pt-12 md:pb-24 relative overflow-hidden">
+    <Section id="projects" className="py-16 md:py-24 relative overflow-hidden">
       {/* Background Decorative Glow */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,var(--color-primary-hover)_0%,transparent_40%)] opacity-[0.04] pointer-events-none" />
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_bottom_left,var(--color-accent-hover)_0%,transparent_40%)] opacity-[0.03] pointer-events-none" />
@@ -139,10 +139,8 @@ export const ProjectsSection: React.FC = () => {
                         src={project.thumbnail}
                         alt={`${project.title} Interface Mockup`}
                         loading="lazy"
-                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02] sharp-img"
                       />
-                      {/* Soft visual shadow vignette overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/30 to-transparent pointer-events-none" />
                     </div>
 
                     {/* Content Details Block */}

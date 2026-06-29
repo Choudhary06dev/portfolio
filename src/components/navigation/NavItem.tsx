@@ -47,7 +47,7 @@ export const NavItem: React.FC<NavItemProps> = ({
         // Homepage: Smooth scroll using Lenis
         const targetElement = document.getElementById(targetId);
         if (targetElement && lenis) {
-          lenis.scrollTo(targetElement, { offset: -70 });
+          lenis.scrollTo(targetElement, { offset: -20 });
         } else if (targetElement) {
           targetElement.scrollIntoView({ behavior: 'smooth' });
         }
