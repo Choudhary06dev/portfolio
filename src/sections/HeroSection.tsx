@@ -41,30 +41,30 @@ export const HeroSection: React.FC = () => {
     <Section
       id="hero"
       variant="default"
-      className="pt-6 pb-16 md:pt-10 md:pb-24 relative overflow-hidden flex flex-col justify-start"
+      className="pt-2 pb-16 md:pt-4 md:pb-24 relative overflow-hidden flex flex-col justify-start"
     >
       {/* Background Decorative Glow, Grid & Micro-texture */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,var(--color-primary-hover)_0%,transparent_45%)] opacity-[0.08] pointer-events-none" />
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_bottom_left,var(--color-secondary-hover)_0%,transparent_35%)] opacity-[0.05] pointer-events-none" />
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,var(--color-primary)_0%,transparent_70%)] opacity-[0.06] pointer-events-none" />
-      
+
       {/* Subtle dot grid pattern */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(var(--color-border-light)_1.5px,transparent_1.5px)] [background-size:32px_32px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_80%,transparent_100%)] opacity-25 pointer-events-none" />
-      
+
       {/* Micro noise grain texture */}
       <div className="absolute inset-0 -z-10 h-full w-full opacity-[0.015] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:12px_12px] pointer-events-none" />
 
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-center">
-          
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-5 items-center">
+
           {/* Left Column: 55% Content Space */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left gap-8">
-            
+          <div className="lg:col-span-7 flex flex-col items-start text-left gap-5">
+
             {/* Availability status tag */}
             <Reveal direction="up" delay={0.1}>
               <Badge
                 variant="primary"
-                className="py-1 px-3 text-[10px] font-semibold leading-none flex items-center gap-1.5 uppercase tracking-wider bg-primary/5 text-primary border-primary/15"
+                className="py-0.5 px-2 text-[9px] font-semibold leading-none flex items-center gap-1.5 uppercase tracking-wider bg-primary/5 text-primary border-primary/15"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                 {personal.tagline}
@@ -90,8 +90,8 @@ export const HeroSection: React.FC = () => {
 
             {/* Recruiter-focused Description */}
             <Reveal direction="up" delay={0.3}>
-              <p className="text-muted-foreground text-base sm:text-lg max-w-[58ch] leading-relaxed">
-                {personal.bio}
+              <p className="text-muted-foreground text-base sm:text-lg max-w-[52ch] leading-relaxed mt-2.5 text-justify">
+                {personal.description}
               </p>
             </Reveal>
 
@@ -102,7 +102,7 @@ export const HeroSection: React.FC = () => {
                   variant="primary"
                   size="lg"
                   onClick={handleScrollToProjects}
-                  className="hover:-translate-y-0.5 active:translate-y-0 hover:shadow-md transition-all duration-300 font-semibold shadow-sm"
+                  className="hover:-translate-y-0.5 active:translate-y-0 hover:shadow-md transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] font-semibold shadow-sm"
                 >
                   View Projects
                   <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
@@ -111,7 +111,7 @@ export const HeroSection: React.FC = () => {
                   variant="outline"
                   size="lg"
                   onClick={handleDownloadResume}
-                  className="hover:-translate-y-0.5 active:translate-y-0 hover:shadow-md transition-all duration-300 font-semibold"
+                  className="hover:-translate-y-0.5 active:translate-y-0 hover:shadow-md transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] font-semibold"
                 >
                   Download Resume
                   <FileDown className="ml-2 h-4 w-4" aria-hidden="true" />
@@ -120,8 +120,8 @@ export const HeroSection: React.FC = () => {
             </Reveal>
 
             {/* Statistics row with dynamic icons and description labels */}
-            <Reveal direction="up" delay={0.5} className="w-full">
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-border/30 w-full mt-4">
+            <Reveal direction="up" delay={0.5} className="w-full mt-[-8px]">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 pt-4 border-t border-border/30 w-full max-w-2xl">
                 {stats.items.map((stat, idx) => {
                   const IconComponent = iconMap[stat.icon] || Code;
                   return (
@@ -132,11 +132,11 @@ export const HeroSection: React.FC = () => {
                       {/* Vertical Divider Line */}
                       {idx > 0 && (
                         <div
-                          className="hidden sm:block absolute left-[-12px] top-4 bottom-4 w-[1px] bg-border/20"
+                          className="hidden sm:block absolute left-[-16px] top-4 bottom-4 w-[1px] bg-border/20"
                           aria-hidden="true"
                         />
                       )}
-                      
+
                       {/* Icon */}
                       <div className="p-2 rounded-lg bg-primary/5 text-primary border border-primary/10 transition-colors group-hover/item:bg-primary/10">
                         <IconComponent className="h-4.5 w-4.5" aria-hidden="true" />
@@ -146,9 +146,9 @@ export const HeroSection: React.FC = () => {
                       <span className="text-2xl font-extrabold tracking-tight text-foreground font-heading leading-none mt-1">
                         {stat.value}
                       </span>
-                      
+
                       {/* Label */}
-                      <span className="text-[10px] text-muted-foreground/90 uppercase tracking-widest font-semibold">
+                      <span className="text-[10px] text-muted-foreground/55 uppercase tracking-widest font-semibold">
                         {stat.label}
                       </span>
 
@@ -167,16 +167,16 @@ export const HeroSection: React.FC = () => {
           {/* Right Column: 45% Visual Space Card */}
           <div className="lg:col-span-5 flex items-center justify-center lg:justify-end w-full">
             <Reveal direction="up" delay={0.3} className="relative w-full max-w-sm lg:max-w-md aspect-square">
-              
+
               {/* Radial backglow behind the card */}
-              <div className="absolute -inset-6 rounded-full bg-gradient-to-tr from-primary/10 to-accent/10 opacity-30 blur-3xl pointer-events-none" />
+              <div className="absolute -inset-4 rounded-full bg-gradient-to-tr from-primary/5 to-accent/5 opacity-20 blur-3xl pointer-events-none" />
 
               {/* Decorative radial border rings */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 border border-border/20 rounded-full [mask-image:linear-gradient(to_bottom,black,transparent)] pointer-events-none" />
-              
+
               {/* Profile Image Card Shell with Premium Glassmorphism */}
               <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden border border-border/60 bg-surface/30 backdrop-blur-md shadow-modal flex items-center justify-center p-3 transition-all duration-500 hover:border-primary/20 hover:shadow-card group">
-                
+
                 {/* Outer reflection overlay border */}
                 <div className="absolute inset-0 rounded-[2.5rem] border border-white/5 pointer-events-none" />
 

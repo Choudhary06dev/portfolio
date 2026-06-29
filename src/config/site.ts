@@ -12,7 +12,7 @@ export const siteConfig: SiteConfigType = {
   email: 'amjad@example.com',
   github: 'https://github.com/choudhary06dev',
   linkedin: 'https://linkedin.com/in/choudhary06dev',
-  resumeUrl: '/resume.pdf',
+  resumeUrl: '/Amjad_Resume.pdf',
   copyright: `© ${new Date().getFullYear()} Amjad. All rights reserved.`,
   logoText: 'Amjad.dev',
 };
