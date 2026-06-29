@@ -2,16 +2,15 @@ import { type PersonalInfoType } from '@/types';
 
 /**
  * Personal profile details data source.
- * Leave empty for architecture setup.
  */
 export const personal: PersonalInfoType = {
-  fullName: '',
-  headline: '',
-  tagline: '',
-  bio: '',
-  location: '',
-  email: '',
+  fullName: 'Muhammad Amjad Subhani',
+  headline: 'Full Stack Laravel & React Developer',
+  tagline: 'Available for Full-Time Opportunities',
+  bio: 'Full-stack software developer specializing in building scalable Laravel backends, interactive React frontends, and robust REST APIs. Experienced in engineering comprehensive ERP systems and integrating AI-powered solutions to optimize business workflows.',
+  location: 'Punjab, Pakistan',
+  email: 'amjad@example.com',
   phone: '',
-  avatar: '',
-  resumeUrl: '',
+  avatar: '/src/assets/hero.png',
+  resumeUrl: '/resume.pdf',
 };

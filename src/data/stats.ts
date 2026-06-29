@@ -5,14 +5,14 @@ import { type StatsType } from '@/types';
  */
 export const stats: StatsType = {
   yearsExperience: 2,
-  projectsCompleted: 15,
-  clientsServed: 10,
-  repositoriesCount: 40,
-  technologiesMastered: 12,
+  projectsCompleted: 0,
+  clientsServed: 0,
+  repositoriesCount: 0,
+  technologiesMastered: 0,
   items: [
     { value: '2+ Years', label: 'Experience' },
-    { value: 'Laravel', label: 'PHP Framework' },
-    { value: 'React', label: 'JS Library' },
-    { value: 'AI Solutions', label: 'Integrations' },
+    { value: 'Laravel', label: 'Primary Stack' },
+    { value: 'React', label: 'Frontend' },
+    { value: 'AI Solutions', label: 'Specialization' },
   ],
 };
