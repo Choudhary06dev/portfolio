@@ -1,5 +1,6 @@
 export { Navigation } from './Navigation';
 export { Header } from './Header';
+export { Footer } from './Footer';
 export { Logo } from './Logo';
 export { NavItem } from './NavItem';
 export { NavList } from './NavList';

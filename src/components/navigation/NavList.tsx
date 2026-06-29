@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavItem } from './NavItem';
 import { navigationItems } from '@/config/navigation';
+import { useActiveSection } from '@/hooks/useActiveSection';
 import { cn } from '@/utils/cn';
 
 export interface NavListProps {
@@ -12,7 +13,7 @@ export interface NavListProps {
 
 /**
  * Navigation lists builder.
- * Maps configuration array items dynamically to NavItem elements.
+ * Maps configuration array items dynamically to NavItem elements and handles active segment highlighting.
  */
 export const NavList: React.FC<NavListProps> = ({
   className,
@@ -20,6 +21,9 @@ export const NavList: React.FC<NavListProps> = ({
   onItemClick,
   direction = 'horizontal',
 }) => {
+  // Watch active section intersections automatically
+  const activeSection = useActiveSection(['hero', 'about', 'experience', 'projects', 'contact']);
+
   return (
     <nav aria-label="Main Navigation" className={className}>
       <ul
@@ -36,6 +40,7 @@ export const NavList: React.FC<NavListProps> = ({
               href={item.href}
               type={item.type}
               onClick={onItemClick}
+              isActive={item.id === activeSection}
               className={cn(itemClassName, {
                 'block w-full': direction === 'vertical',
               })}

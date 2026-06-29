@@ -6,15 +6,27 @@ import { cn } from '@/utils/cn';
 export interface NavItemProps extends NavItemType {
   onClick?: () => void;
   className?: string;
+  isActive?: boolean;
 }
 
 /**
  * Reusable navigation link component.
- * Decides whether to render a standard anchor, React Router Link, or external jump tab based on item type.
+ * Supports active highlighting and resolves anchors, internal page routing, and external tabs.
  */
-export const NavItem: React.FC<NavItemProps> = ({ label, href, type, onClick, className }) => {
+export const NavItem: React.FC<NavItemProps> = ({
+  label,
+  href,
+  type,
+  onClick,
+  className,
+  isActive = false,
+}) => {
   const baseClasses =
-    'text-sm font-medium text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm py-1.5 px-3';
+    'text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm py-1.5 px-3';
+
+  const activeClasses = isActive
+    ? 'text-primary font-semibold'
+    : 'text-muted-foreground hover:text-foreground';
 
   if (type === 'external') {
     return (
@@ -23,7 +35,7 @@ export const NavItem: React.FC<NavItemProps> = ({ label, href, type, onClick, cl
         target="_blank"
         rel="noopener noreferrer"
         onClick={onClick}
-        className={cn(baseClasses, className)}
+        className={cn(baseClasses, activeClasses, className)}
       >
         {label}
       </a>
@@ -32,14 +44,14 @@ export const NavItem: React.FC<NavItemProps> = ({ label, href, type, onClick, cl
 
   if (type === 'anchor') {
     return (
-      <a href={href} onClick={onClick} className={cn(baseClasses, className)}>
+      <a href={href} onClick={onClick} className={cn(baseClasses, activeClasses, className)}>
         {label}
       </a>
     );
   }
 
   return (
-    <Link to={href} onClick={onClick} className={cn(baseClasses, className)}>
+    <Link to={href} onClick={onClick} className={cn(baseClasses, activeClasses, className)}>
       {label}
     </Link>
   );

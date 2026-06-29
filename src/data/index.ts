@@ -1,0 +1,10 @@
+export { personal } from './personal';
+export { experience } from './experience';
+export { projects } from './projects';
+export { skills } from './skills';
+export { education } from './education';
+export { certifications } from './certifications';
+export { services } from './services';
+export { socials } from './socials';
+export { stats } from './stats';
+export { testimonials } from './testimonials';

@@ -1,11 +1,26 @@
 import React from 'react';
+import {
+  HeroSection,
+  AboutSection,
+  ExperienceSection,
+  ProjectsSection,
+  ContactSection,
+} from '@/sections';
 
 /**
- * Main application landing view.
- * Displays structural coming soon message.
+ * Main Composed Landing Viewport.
+ * Groups and renders page content blocks in sequence.
  */
 const Home: React.FC = () => {
-  return <h1>Coming Soon</h1>;
+  return (
+    <>
+      <HeroSection />
+      <AboutSection />
+      <ExperienceSection />
+      <ProjectsSection />
+      <ContactSection />
+    </>
+  );
 };
 
 export default Home;

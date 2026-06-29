@@ -74,7 +74,7 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
           <motion.span
             key={idx}
             variants={childVariants}
-            className="inline-block mr-[0.25em] whitespace-nowrap"
+            className="mr-[0.25em] inline-block whitespace-nowrap"
           >
             {word}
           </motion.span>
