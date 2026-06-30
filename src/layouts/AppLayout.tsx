@@ -12,7 +12,7 @@ const AppLayout: React.FC = () => {
   const location = useLocation();
 
   return (
-    <div className="bg-background text-foreground flex min-h-screen flex-col transition-colors duration-300 relative overflow-x-clip">
+    <div className="bg-background text-foreground flex min-h-screen flex-col transition-colors duration-300 relative">
       <FloatingBlobs />
       <Header />
       <main className="flex-1 relative z-10">
