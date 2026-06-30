@@ -1,0 +1,26 @@
+{
+  "name": "Muhammad Amjad Subhani | Full Stack Laravel & React Developer",
+  "short_name": "Amjad Subhani",
+  "description": "Portfolio of Muhammad Amjad Subhani, a Full Stack Laravel & React Developer specializing in ERP Systems, REST APIs, and AI Solutions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0c",
+  "theme_color": "#8b5cf6",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

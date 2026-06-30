@@ -8,6 +8,7 @@ import { Heading } from '@/components/ui/Heading';
 import { Section } from '@/components/ui/Section';
 import { Reveal } from '@/components/common/Reveal';
 import { cn } from '@/utils/cn';
+import { useSEO } from '@/hooks/useSEO';
 
 // Inline vector SVG icon maps
 const Icons = {
@@ -50,6 +51,14 @@ export const ProjectDetail: React.FC = () => {
   // Find active project from slug parameters
   const projectIndex = projects.findIndex((p) => p.slug === slug);
   const project = projects[projectIndex];
+
+  // Dynamic SEO configuration for active project case study
+  useSEO({
+    title: project ? `${project.title} | Case Study` : 'Project Detail | Muhammad Amjad Subhani',
+    description: project ? project.description : 'Detailed project case study for Muhammad Amjad Subhani portfolio.',
+    canonicalPath: `/projects/${slug}`,
+    keywords: project ? `${project.title}, case study, ${project.technologies.join(', ')}, Laravel Developer, React Developer, Full Stack Developer, Pakistan` : 'Laravel, React, Full Stack Developer, PHP, JavaScript, TypeScript',
+  });
 
   // Scroll viewport to top on page mount/transition
   useEffect(() => {

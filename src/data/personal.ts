@@ -12,7 +12,7 @@ export const personal: PersonalInfoType = {
   location: 'Punjab, Pakistan',
   email: 'amjad.softdev@gmail.com',
   phone: '0305 2021975',
-  avatar: '/src/assets/Amjad.png',
+  avatar: '/Amjad.png',
   resumeUrl: '/Amjad_Resume.pdf',
   currentRole: {
     position: 'Software Developer',

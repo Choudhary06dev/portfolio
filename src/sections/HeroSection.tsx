@@ -293,7 +293,8 @@ export const HeroSection: React.FC = () => {
                   <img
                     src={personal.avatar}
                     alt={personal.fullName}
-                    loading="lazy"
+                    loading="eager"
+                    fetchPriority="high"
                     className="w-full h-full object-cover grayscale contrast-[1.08] brightness-[0.98] transition-all duration-700 ease-out group-hover:grayscale-0 group-hover:scale-[1.04] group-hover:brightness-100"
                   />
                   {/* Glass refraction reflection overlay */}

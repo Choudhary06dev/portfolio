@@ -18,4 +18,5 @@ export interface SiteConfigType {
   resumeUrl: string;
   copyright: string;
   logoText: string;
+  siteUrl?: string;
 }
