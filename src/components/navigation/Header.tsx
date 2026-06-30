@@ -23,7 +23,7 @@ export const Header: React.FC = () => {
 
   return (
     <header
-      className={cn('sticky top-0 z-50 w-full transition-all duration-300 ease-in-out', {
+      className={cn('fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ease-in-out', {
         /* Scrolled state aesthetics (opaque surface + border) */
         'bg-surface/90 border-border border-b py-4 shadow-sm backdrop-blur-md': isScrolled,
 

@@ -15,7 +15,7 @@ const AppLayout: React.FC = () => {
     <div className="bg-background text-foreground flex min-h-screen flex-col transition-colors duration-300 relative">
       <FloatingBlobs />
       <Header />
-      <main className="flex-1 relative z-10">
+      <main className="flex-1 relative z-10 pt-[72px]">
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
