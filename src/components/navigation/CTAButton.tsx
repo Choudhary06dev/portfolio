@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/Button';
 import { siteConfig } from '@/config/site';
 import { FileDown } from 'lucide-react';
+import { Magnetic } from '@/components/common';
 
 /**
  * Navigation CTA Action button.
@@ -16,24 +17,28 @@ export const CTAButton: React.FC = () => {
 
   if (isExternal) {
     return (
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={() => window.open(resumeUrl, '_blank', 'noopener,noreferrer')}
-      >
-        <FileDown className="mr-2 h-4 w-4" aria-hidden="true" />
-        Resume
-      </Button>
+      <Magnetic strength={0.25} range={50}>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => window.open(resumeUrl, '_blank', 'noopener,noreferrer')}
+        >
+          <FileDown className="mr-2 h-4 w-4" aria-hidden="true" />
+          Resume
+        </Button>
+      </Magnetic>
     );
   }
 
   return (
-    <Link to={resumeUrl} tabIndex={-1} className="focus-visible:outline-none">
-      <Button variant="outline" size="sm">
-        <FileDown className="mr-2 h-4 w-4" aria-hidden="true" />
-        Resume
-      </Button>
-    </Link>
+    <Magnetic strength={0.25} range={50}>
+      <Link to={resumeUrl} tabIndex={-1} className="focus-visible:outline-none">
+        <Button variant="outline" size="sm">
+          <FileDown className="mr-2 h-4 w-4" aria-hidden="true" />
+          Resume
+        </Button>
+      </Link>
+    </Magnetic>
   );
 };
 

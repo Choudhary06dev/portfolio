@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { type NavItemType } from '@/types/navigation';
 import { cn } from '@/utils/cn';
 import { useLenisInstance } from '@/hooks/useLenis';
+import { Magnetic } from '@/components/common';
 
 export interface NavItemProps extends NavItemType {
   onClick?: () => void;
@@ -82,41 +83,47 @@ export const NavItem: React.FC<NavItemProps> = ({
 
   if (type === 'external') {
     return (
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={onClick}
-        className={cn('group relative', baseClasses, activeClasses, className)}
-      >
-        <span className="relative z-10">{label}</span>
-        {renderDecorations()}
-      </a>
+      <Magnetic strength={0.2} range={35}>
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={onClick}
+          className={cn('group relative', baseClasses, activeClasses, className)}
+        >
+          <span className="relative z-10">{label}</span>
+          {renderDecorations()}
+        </a>
+      </Magnetic>
     );
   }
 
   if (type === 'anchor') {
     return (
-      <a
-        href={href}
-        onClick={handleAnchorClick}
-        className={cn('group relative', baseClasses, activeClasses, className)}
-      >
-        <span className="relative z-10">{label}</span>
-        {renderDecorations()}
-      </a>
+      <Magnetic strength={0.2} range={35}>
+        <a
+          href={href}
+          onClick={handleAnchorClick}
+          className={cn('group relative', baseClasses, activeClasses, className)}
+        >
+          <span className="relative z-10">{label}</span>
+          {renderDecorations()}
+        </a>
+      </Magnetic>
     );
   }
 
   return (
-    <Link
-      to={href}
-      onClick={onClick}
-      className={cn('group relative', baseClasses, activeClasses, className)}
-    >
-      <span className="relative z-10">{label}</span>
-      {renderDecorations()}
-    </Link>
+    <Magnetic strength={0.2} range={35}>
+      <Link
+        to={href}
+        onClick={onClick}
+        className={cn('group relative', baseClasses, activeClasses, className)}
+      >
+        <span className="relative z-10">{label}</span>
+        {renderDecorations()}
+      </Link>
+    </Magnetic>
   );
 };
 

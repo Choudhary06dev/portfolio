@@ -5,3 +5,4 @@ export { AnimatedText, type AnimatedTextProps } from './AnimatedText';
 export { Reveal, type RevealProps } from './Reveal';
 export { FloatingBlobs } from './FloatingBlobs';
 export { CustomCursor } from './CustomCursor';
+export { Magnetic, type MagneticProps } from './Magnetic';

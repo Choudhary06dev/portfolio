@@ -4,7 +4,7 @@ import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
-import { GradientText } from '@/components/common/GradientText';
+import { GradientText, Magnetic } from '@/components/common';
 import { personal } from '@/data/personal';
 import { stats } from '@/data/stats';
 import { Briefcase, Code, Atom, Sparkles, FileDown, ArrowRight } from 'lucide-react';
@@ -166,36 +166,40 @@ export const HeroSection: React.FC = () => {
 
             {/* CTA buttons appear one after another */}
             <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4">
-              <motion.div
-                whileHover={{ y: -3, scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-              >
-                <Button
-                  variant="primary"
-                  size="lg"
-                  onClick={handleScrollToProjects}
-                  className="font-semibold shadow-sm transition-all duration-300 ease-out hover:shadow-lg"
+              <Magnetic strength={0.25} range={65}>
+                <motion.div
+                  whileHover={{ y: -3, scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 17 }}
                 >
-                  View Projects
-                  <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                </Button>
-              </motion.div>
-              <motion.div
-                whileHover={{ y: -3, scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-              >
-                <Button
-                  variant="outline"
-                  size="lg"
-                  onClick={handleDownloadResume}
-                  className="font-semibold transition-all duration-300 ease-out hover:shadow-lg"
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    onClick={handleScrollToProjects}
+                    className="font-semibold shadow-sm transition-all duration-300 ease-out hover:shadow-lg"
+                  >
+                    View Projects
+                    <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                  </Button>
+                </motion.div>
+              </Magnetic>
+              <Magnetic strength={0.25} range={65}>
+                <motion.div
+                  whileHover={{ y: -3, scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 17 }}
                 >
-                  Download Resume
-                  <FileDown className="ml-2 h-4 w-4" aria-hidden="true" />
-                </Button>
-              </motion.div>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    onClick={handleDownloadResume}
+                    className="font-semibold transition-all duration-300 ease-out hover:shadow-lg"
+                  >
+                    Download Resume
+                    <FileDown className="ml-2 h-4 w-4" aria-hidden="true" />
+                  </Button>
+                </motion.div>
+              </Magnetic>
             </motion.div>
 
             {/* Stats stagger individually */}
