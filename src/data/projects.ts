@@ -9,9 +9,18 @@ export const projects: readonly ProjectType[] = [
     id: 'project-primepharm',
     slug: 'primepharm-erp',
     title: 'PrimePharm ERP',
-    description: 'A modern pharmacy ERP platform designed to streamline inventory management, billing, sales, purchases, stock tracking, reporting, and pharmacy operations using a scalable Laravel and React architecture.',
+    description:
+      'A modern pharmacy ERP platform designed to streamline inventory management, billing, sales, purchases, stock tracking, reporting, and pharmacy operations using a scalable Laravel and React architecture.',
     shortDescription: 'Enterprise pharmacy operations, POS, and inventory automation platform.',
-    technologies: ['Laravel', 'React', 'TypeScript', 'PostgreSQL', 'Tailwind CSS', 'REST API', 'Sanctum'],
+    technologies: [
+      'Laravel',
+      'React',
+      'TypeScript',
+      'PostgreSQL',
+      'Tailwind CSS',
+      'REST API',
+      'Sanctum',
+    ],
     category: 'Enterprise ERP',
     featured: true, // Flagship Project
     status: 'completed',
@@ -33,10 +42,14 @@ export const projects: readonly ProjectType[] = [
       'Responsive Admin Dashboard',
     ],
     badgeLabel: '⭐ Featured',
-    overview: 'PrimePharm ERP is a web-based enterprise resource planning platform engineered to digitize inventory control, billing, purchases, sales, stock alerts, and financial logs for retail pharmacies.',
-    problem: 'Traditional pharmacy operations suffered from manual inventory calculations, missing expiry tracking, billing delays during rush hours, and lack of real-time sales reports.',
-    solution: 'Developed a reactive, robust system utilizing a Laravel API backend and React frontend that handles multi-tenant instances, batch control, automated inventory warnings, and ultra-fast POS checkout.',
-    architecture: 'Built on a RESTful micro-framework model. Utilizes Laravel Sanctum for API token validation and PostgreSQL for transaction safety. React on the frontend is optimized with lightweight states and queries.',
+    overview:
+      'PrimePharm ERP is a web-based enterprise resource planning platform engineered to digitize inventory control, billing, purchases, sales, stock alerts, and financial logs for retail pharmacies.',
+    problem:
+      'Traditional pharmacy operations suffered from manual inventory calculations, missing expiry tracking, billing delays during rush hours, and lack of real-time sales reports.',
+    solution:
+      'Developed a reactive, robust system utilizing a Laravel API backend and React frontend that handles multi-tenant instances, batch control, automated inventory warnings, and ultra-fast POS checkout.',
+    architecture:
+      'Built on a RESTful micro-framework model. Utilizes Laravel Sanctum for API token validation and PostgreSQL for transaction safety. React on the frontend is optimized with lightweight states and queries.',
     features: [
       'Multi-tenant Instance Control',
       'Inventory & Batch Expiry Tracking',
@@ -46,14 +59,17 @@ export const projects: readonly ProjectType[] = [
       'Granular RBAC Security Gates',
     ],
     gallery: ['/projects/project-erp.png'],
-    challenges: 'Managing concurrent transactional reads during stock updates and calculations was solved by employing PostgreSQL transaction locks and indexing optimize tags.',
-    results: 'Streamlined invoice time by 40% and completely automated stock alert warnings, reducing manual tracking overhead by 50%.',
+    challenges:
+      'Managing concurrent transactional reads during stock updates and calculations was solved by employing PostgreSQL transaction locks and indexing optimize tags.',
+    results:
+      'Streamlined invoice time by 40% and completely automated stock alert warnings, reducing manual tracking overhead by 50%.',
   },
   {
     id: 'project-video-analytics',
     slug: 'video-analytics-solution',
     title: 'Video Analytics Solution',
-    description: 'An AI-powered surveillance platform capable of analyzing live RTSP camera streams using computer vision models for real-time monitoring, object detection, and intelligent event alerts.',
+    description:
+      'An AI-powered surveillance platform capable of analyzing live RTSP camera streams using computer vision models for real-time monitoring, object detection, and intelligent event alerts.',
     shortDescription: 'AI Powered Platform for camera surveillance and RTSP detection streams.',
     technologies: ['React', 'FastAPI', 'Python', 'YOLO', 'OpenCV', 'PostgreSQL', 'REST API'],
     category: 'AI Powered Platform',
@@ -76,10 +92,14 @@ export const projects: readonly ProjectType[] = [
       'Camera Management',
     ],
     badgeLabel: '🤖 AI Powered',
-    overview: 'An AI-powered video surveillance application designed to analyze RTSP camera streams, detect objects, monitor live feeds, and report events.',
-    problem: 'Security teams found it difficult to monitor multiple screens manually, leading to missed security breaches and slow response times.',
-    solution: 'Engineered a real-time surveillance platform utilizing YOLO object detection models and FastAPI pipelines to analyze feeds and trigger automated Slack/Email alerts.',
-    architecture: 'Uses FastAPI as the ingestion layer for video frame processing. Python YOLO models perform local inferencing. React is used for rendering concurrent streams in real-time.',
+    overview:
+      'An AI-powered video surveillance application designed to analyze RTSP camera streams, detect objects, monitor live feeds, and report events.',
+    problem:
+      'Security teams found it difficult to monitor multiple screens manually, leading to missed security breaches and slow response times.',
+    solution:
+      'Engineered a real-time surveillance platform utilizing YOLO object detection models and FastAPI pipelines to analyze feeds and trigger automated Slack/Email alerts.',
+    architecture:
+      'Uses FastAPI as the ingestion layer for video frame processing. Python YOLO models perform local inferencing. React is used for rendering concurrent streams in real-time.',
     features: [
       'Multi-camera stream monitoring',
       'Real-time YOLO object classification',
@@ -88,14 +108,17 @@ export const projects: readonly ProjectType[] = [
       'Camera management dashboard',
     ],
     gallery: ['/projects/project-ai.png'],
-    challenges: 'Low frame latency was achieved by offloading frame decoding processes to parallel asynchronous workers.',
-    results: 'Achieved near real-time detection alerts under 200ms latency, significantly improving surveillance responsiveness.',
+    challenges:
+      'Low frame latency was achieved by offloading frame decoding processes to parallel asynchronous workers.',
+    results:
+      'Achieved near real-time detection alerts under 200ms latency, significantly improving surveillance responsiveness.',
   },
   {
     id: 'project-complaint-system',
     slug: 'complaint-management-system',
     title: 'Complaint Management System',
-    description: 'A web-based complaint management platform developed to streamline complaint registration, assignment, tracking, and reporting. The system improves operational efficiency by digitizing the complete complaint handling workflow.',
+    description:
+      'A web-based complaint management platform developed to streamline complaint registration, assignment, tracking, and reporting. The system improves operational efficiency by digitizing the complete complaint handling workflow.',
     shortDescription: 'Web-based complaint tracking and dashboard console.',
     technologies: ['Laravel', 'React', 'MySQL', 'REST API', 'Bootstrap'],
     category: 'Business Application',
@@ -117,10 +140,14 @@ export const projects: readonly ProjectType[] = [
       'Notifications',
     ],
     badgeLabel: '💼 Business Application',
-    overview: 'A web-based portal developed to automate complaint registration, ticket assignments, status tracking, and department reporting.',
-    problem: 'FBR departments and public corporations handled complaints manually through physical files, causing delayed resolutions and lack of progress tracking.',
-    solution: 'Built a workflow digitization tool using Laravel and React that processes complaint tickets and routes them to appropriate division teams automatically.',
-    architecture: 'A MVC Laravel framework serving API queries to a React dashboard. Utilizes MySQL for transaction persistence and Bootstrap for rapid component layout.',
+    overview:
+      'A web-based portal developed to automate complaint registration, ticket assignments, status tracking, and department reporting.',
+    problem:
+      'FBR departments and public corporations handled complaints manually through physical files, causing delayed resolutions and lack of progress tracking.',
+    solution:
+      'Built a workflow digitization tool using Laravel and React that processes complaint tickets and routes them to appropriate division teams automatically.',
+    architecture:
+      'A MVC Laravel framework serving API queries to a React dashboard. Utilizes MySQL for transaction persistence and Bootstrap for rapid component layout.',
     features: [
       'Digital Complaint Registration',
       'Automatic Assignment Algorithms',
@@ -129,7 +156,9 @@ export const projects: readonly ProjectType[] = [
       'Custom Notifications Alert System',
     ],
     gallery: ['/projects/project-api.png'],
-    challenges: 'Integrating automated ticketing routing logic was resolved by writing a modular database queue listener.',
-    results: 'Eliminated paperwork tracking overhead by 100% and reduced complaint resolution cycles by 35%.',
+    challenges:
+      'Integrating automated ticketing routing logic was resolved by writing a modular database queue listener.',
+    results:
+      'Eliminated paperwork tracking overhead by 100% and reduced complaint resolution cycles by 35%.',
   },
 ];

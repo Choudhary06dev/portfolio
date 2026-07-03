@@ -12,7 +12,7 @@ export const FloatingBlobs: React.FC = () => {
   if (shouldReduceMotion) return null;
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none -z-20 select-none">
+    <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden select-none">
       {/* Blob 1: Violet/Primary */}
       <motion.div
         animate={{
@@ -25,7 +25,7 @@ export const FloatingBlobs: React.FC = () => {
           repeat: Infinity,
           ease: 'easeInOut',
         }}
-        className="absolute top-[10%] left-[20%] w-[35rem] h-[35rem] rounded-full bg-primary/10 blur-[120px]"
+        className="bg-primary/10 absolute top-[10%] left-[20%] h-[35rem] w-[35rem] rounded-full blur-[120px]"
       />
 
       {/* Blob 2: Cyan/Accent */}
@@ -40,7 +40,7 @@ export const FloatingBlobs: React.FC = () => {
           repeat: Infinity,
           ease: 'easeInOut',
         }}
-        className="absolute bottom-[20%] right-[15%] w-[40rem] h-[40rem] rounded-full bg-accent/5 blur-[140px]"
+        className="bg-accent/5 absolute right-[15%] bottom-[20%] h-[40rem] w-[40rem] rounded-full blur-[140px]"
       />
 
       {/* Blob 3: Pink/Glow */}
@@ -54,7 +54,7 @@ export const FloatingBlobs: React.FC = () => {
           repeat: Infinity,
           ease: 'easeInOut',
         }}
-        className="absolute top-[40%] right-[30%] w-[25rem] h-[25rem] rounded-full bg-[#ec4899]/5 blur-[100px]"
+        className="absolute top-[40%] right-[30%] h-[25rem] w-[25rem] rounded-full bg-[#ec4899]/5 blur-[100px]"
       />
     </div>
   );

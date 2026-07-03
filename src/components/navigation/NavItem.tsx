@@ -65,7 +65,7 @@ export const NavItem: React.FC<NavItemProps> = ({
       {isActive && (
         <motion.span
           layoutId="activeNavPill"
-          className="absolute inset-0 rounded-md bg-primary/[0.08] border border-primary/15 -z-10"
+          className="bg-primary/[0.08] border-primary/15 absolute inset-0 -z-10 rounded-md border"
           transition={{ type: 'spring', stiffness: 380, damping: 30 }}
         />
       )}
@@ -73,7 +73,7 @@ export const NavItem: React.FC<NavItemProps> = ({
       {isHovered && !isActive && (
         <motion.span
           layoutId="hoverNavPill"
-          className="absolute inset-0 rounded-md bg-foreground/[0.04] dark:bg-white/[0.04] border border-foreground/[0.03] dark:border-white/[0.03] -z-10"
+          className="bg-foreground/[0.04] border-foreground/[0.03] absolute inset-0 -z-10 rounded-md border dark:border-white/[0.03] dark:bg-white/[0.04]"
           transition={{ type: 'spring', stiffness: 380, damping: 28 }}
         />
       )}
@@ -87,7 +87,7 @@ export const NavItem: React.FC<NavItemProps> = ({
         target="_blank"
         rel="noopener noreferrer"
         onClick={onClick}
-        className={cn('relative group', baseClasses, activeClasses, className)}
+        className={cn('group relative', baseClasses, activeClasses, className)}
       >
         <span className="relative z-10">{label}</span>
         {renderDecorations()}
@@ -100,7 +100,7 @@ export const NavItem: React.FC<NavItemProps> = ({
       <a
         href={href}
         onClick={handleAnchorClick}
-        className={cn('relative group', baseClasses, activeClasses, className)}
+        className={cn('group relative', baseClasses, activeClasses, className)}
       >
         <span className="relative z-10">{label}</span>
         {renderDecorations()}
@@ -109,7 +109,11 @@ export const NavItem: React.FC<NavItemProps> = ({
   }
 
   return (
-    <Link to={href} onClick={onClick} className={cn('relative group', baseClasses, activeClasses, className)}>
+    <Link
+      to={href}
+      onClick={onClick}
+      className={cn('group relative', baseClasses, activeClasses, className)}
+    >
       <span className="relative z-10">{label}</span>
       {renderDecorations()}
     </Link>

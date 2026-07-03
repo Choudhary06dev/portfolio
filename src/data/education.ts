@@ -11,6 +11,7 @@ export const education: readonly EducationType[] = [
     startDate: '2019',
     endDate: '2023',
     grade: 'A',
-    description: 'Specialized in hardware-software integrations, microprocessors, and network systems.',
+    description:
+      'Specialized in hardware-software integrations, microprocessors, and network systems.',
   },
 ];

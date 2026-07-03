@@ -30,7 +30,7 @@ const RollingText: React.FC = () => {
   }, []);
 
   return (
-    <span className="inline-block relative overflow-hidden h-[1.25em] min-w-[220px] sm:min-w-[280px] align-bottom select-none">
+    <span className="relative inline-block h-[1.25em] min-w-[220px] overflow-hidden align-bottom select-none sm:min-w-[280px]">
       <AnimatePresence mode="wait">
         <motion.span
           key={index}
@@ -38,7 +38,7 @@ const RollingText: React.FC = () => {
           animate={{ y: '0%', opacity: 1 }}
           exit={{ y: '-100%', opacity: 0 }}
           transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute left-0 top-0 w-full font-black bg-gradient-to-r from-primary via-primary-hover to-accent bg-clip-text text-transparent"
+          className="from-primary via-primary-hover to-accent absolute top-0 left-0 w-full bg-gradient-to-r bg-clip-text font-black text-transparent"
         >
           {ROLES[index]}
         </motion.span>
@@ -65,7 +65,9 @@ const CountUp: React.FC<{ to: number; duration?: number; suffix?: string }> = ({
     let start = 0;
     const end = to;
     if (start === end) {
-      setCount(end);
+      setTimeout(() => {
+        setCount(end);
+      }, 0);
       return;
     }
 
@@ -83,7 +85,12 @@ const CountUp: React.FC<{ to: number; duration?: number; suffix?: string }> = ({
     return () => clearInterval(timer);
   }, [isInView, to, duration]);
 
-  return <span ref={ref}>{count}{suffix}</span>;
+  return (
+    <span ref={ref}>
+      {count}
+      {suffix}
+    </span>
+  );
 };
 
 /**
@@ -94,12 +101,15 @@ const TimelineGrowLine: React.FC = () => {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <div ref={ref} className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-border/20 overflow-hidden hidden md:block">
+    <div
+      ref={ref}
+      className="bg-border/20 absolute top-0 bottom-0 left-1/2 hidden w-[2px] -translate-x-1/2 overflow-hidden md:block"
+    >
       <motion.div
         initial={{ scaleY: 0 }}
         animate={isInView ? { scaleY: 1 } : { scaleY: 0 }}
         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full h-full bg-gradient-to-b from-primary via-accent to-transparent origin-top"
+        className="from-primary via-accent h-full w-full origin-top bg-gradient-to-b to-transparent"
       />
     </div>
   );
@@ -135,43 +145,40 @@ export const ExperienceSection: React.FC = () => {
   const currentRole = experience.find((exp) => !exp.endDate) || experience[0];
 
   return (
-    <Section id="experience" className="py-16 md:py-24 relative overflow-hidden">
+    <Section id="experience" className="relative overflow-hidden py-16 md:py-24">
       {/* Background Decorative Mesh & Grids */}
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_bottom_right,var(--color-primary-hover)_0%,transparent_35%)] opacity-[0.03] pointer-events-none" />
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,var(--color-accent-hover)_0%,transparent_35%)] opacity-[0.02] pointer-events-none" />
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-[0.01] pointer-events-none" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_bottom_right,var(--color-primary-hover)_0%,transparent_35%)] opacity-[0.03]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,var(--color-accent-hover)_0%,transparent_35%)] opacity-[0.02]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] bg-[size:4rem_4rem] opacity-[0.01]" />
 
       <Container>
-        <div className="flex flex-col gap-10 w-full">
-          
+        <div className="flex w-full flex-col gap-10">
           {/* Top Panel Card Wrapper (Visual upgrade to avoid simple layouts) */}
           <Reveal direction="up" delay={0.1} duration={0.8} className="w-full">
-            <motion.div 
+            <motion.div
               whileHover={{ scale: 1.005 }}
               transition={{ type: 'spring', stiffness: 200, damping: 30 }}
-              className="relative group overflow-hidden rounded-xl p-[1px] bg-gradient-to-r from-primary/10 via-border/50 to-accent/10 hover:from-primary/25 hover:to-accent/25 transition-all duration-300 ease-out shadow-sm w-full"
+              className="group from-primary/10 via-border/50 to-accent/10 hover:from-primary/25 hover:to-accent/25 relative w-full overflow-hidden rounded-xl bg-gradient-to-r p-[1px] shadow-sm transition-all duration-300 ease-out"
             >
-              
               {/* Inner Glass Container with subtle grid */}
-              <div className="relative rounded-[11px] p-6 sm:p-8 bg-surface/10 backdrop-blur-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                
+              <div className="bg-surface/10 relative grid grid-cols-1 items-center gap-8 rounded-[11px] p-6 backdrop-blur-xl sm:p-8 lg:grid-cols-12">
                 {/* Tech grid overlay */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_80%,transparent_100%)] opacity-[0.02] pointer-events-none" />
-                <div className="absolute -inset-10 rounded-full bg-gradient-to-tr from-primary/5 to-accent/5 opacity-10 blur-2xl group-hover:opacity-25 transition-opacity duration-500 pointer-events-none" />
+                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_80%,transparent_100%)] bg-[size:3rem_3rem] opacity-[0.02]" />
+                <div className="from-primary/5 to-accent/5 pointer-events-none absolute -inset-10 rounded-full bg-gradient-to-tr opacity-10 blur-2xl transition-opacity duration-500 group-hover:opacity-25" />
 
                 {/* Left Column: Heading & Sliding Words */}
-                <div className="lg:col-span-5 flex flex-col items-start gap-3.5 relative">
+                <div className="relative flex flex-col items-start gap-3.5 lg:col-span-5">
                   <Badge
                     variant="primary"
-                    className="py-1 px-3 text-[10px] font-semibold leading-none uppercase tracking-wider bg-primary/5 text-primary border-primary/15"
+                    className="bg-primary/5 text-primary border-primary/15 px-3 py-1 text-[10px] leading-none font-semibold tracking-wider uppercase"
                   >
                     Experience
                   </Badge>
-                  
+
                   <Heading
                     as="h2"
                     size="3xl"
-                    className="tracking-tighter leading-[1.12] font-black text-foreground flex flex-col gap-1 items-start"
+                    className="text-foreground flex flex-col items-start gap-1 leading-[1.12] font-black tracking-tighter"
                   >
                     <span>Engineering as a</span>
                     <RollingText />
@@ -179,69 +186,67 @@ export const ExperienceSection: React.FC = () => {
                 </div>
 
                 {/* Right Column: Description & Metric Cards */}
-                <div className="lg:col-span-7 flex flex-col gap-6 relative">
-                  <p className="text-muted-foreground text-sm sm:text-base leading-relaxed text-justify max-w-[58ch]">
-                    A record of engineering enterprise ERP platforms, microservices, and reactive frontend dashboards. Focused on turning complex specifications into clean, scalable software frameworks.
+                <div className="relative flex flex-col gap-6 lg:col-span-7">
+                  <p className="text-muted-foreground max-w-[58ch] text-justify text-sm leading-relaxed sm:text-base">
+                    A record of engineering enterprise ERP platforms, microservices, and reactive
+                    frontend dashboards. Focused on turning complex specifications into clean,
+                    scalable software frameworks.
                   </p>
 
                   {/* Horizontal stats widgets */}
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
-                    
+                  <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-3">
                     {/* Stat 1: Years of Experience */}
-                    <motion.div 
+                    <motion.div
                       whileHover={{ y: -4, scale: 1.03 }}
                       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                      className="p-4 rounded-lg border border-border/30 bg-surface/20 backdrop-blur-md flex flex-col gap-1.5 shadow-xs hover:border-primary/25 hover:shadow-md transition-all duration-300 ease-out group cursor-default"
+                      className="border-border/30 bg-surface/20 hover:border-primary/25 group flex cursor-default flex-col gap-1.5 rounded-lg border p-4 shadow-xs backdrop-blur-md transition-all duration-300 ease-out hover:shadow-md"
                     >
-                      <span className="text-2xl font-black text-foreground tracking-tight transition-colors duration-300 group-hover:text-primary leading-none">
+                      <span className="text-foreground group-hover:text-primary text-2xl leading-none font-black tracking-tight transition-colors duration-300">
                         <CountUp to={2} suffix="+" />
                       </span>
-                      <span className="text-[9px] text-muted-foreground/80 font-bold uppercase tracking-widest leading-none mt-1">
+                      <span className="text-muted-foreground/80 mt-1 text-[9px] leading-none font-bold tracking-widest uppercase">
                         Years Experience
                       </span>
                     </motion.div>
 
                     {/* Stat 2: Projects Built */}
-                    <motion.div 
+                    <motion.div
                       whileHover={{ y: -4, scale: 1.03 }}
                       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                      className="p-4 rounded-lg border border-border/30 bg-surface/20 backdrop-blur-md flex flex-col gap-1.5 shadow-xs hover:border-primary/25 hover:shadow-md transition-all duration-300 ease-out group cursor-default"
+                      className="border-border/30 bg-surface/20 hover:border-primary/25 group flex cursor-default flex-col gap-1.5 rounded-lg border p-4 shadow-xs backdrop-blur-md transition-all duration-300 ease-out hover:shadow-md"
                     >
-                      <span className="text-2xl font-black text-foreground tracking-tight transition-colors duration-300 group-hover:text-primary leading-none">
+                      <span className="text-foreground group-hover:text-primary text-2xl leading-none font-black tracking-tight transition-colors duration-300">
                         <CountUp to={10} suffix="+" />
                       </span>
-                      <span className="text-[9px] text-muted-foreground/80 font-bold uppercase tracking-widest leading-none mt-1">
+                      <span className="text-muted-foreground/80 mt-1 text-[9px] leading-none font-bold tracking-widest uppercase">
                         Projects Built
                       </span>
                     </motion.div>
 
                     {/* Stat 3: Current Role — pulse indicator */}
                     {currentRole && (
-                      <motion.div 
+                      <motion.div
                         whileHover={{ y: -4, scale: 1.03 }}
                         transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                        className="p-4 rounded-lg border border-border/30 bg-surface/20 backdrop-blur-md flex flex-col justify-center items-start shadow-xs hover:border-emerald-500/25 hover:shadow-md transition-all duration-300 ease-out cursor-default"
+                        className="border-border/30 bg-surface/20 flex cursor-default flex-col items-start justify-center rounded-lg border p-4 shadow-xs backdrop-blur-md transition-all duration-300 ease-out hover:border-emerald-500/25 hover:shadow-md"
                       >
                         <div className="flex items-center gap-2">
                           <span className="relative flex h-2.5 w-2.5">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
                           </span>
-                          <span className="text-[10px] font-extrabold text-foreground uppercase tracking-wider leading-none">
+                          <span className="text-foreground text-[10px] leading-none font-extrabold tracking-wider uppercase">
                             Active Developer
                           </span>
                         </div>
-                        <span className="text-[9px] text-muted-foreground/85 font-semibold mt-2.5 leading-none">
+                        <span className="text-muted-foreground/85 mt-2.5 text-[9px] leading-none font-semibold">
                           At {currentRole.company}
                         </span>
                       </motion.div>
                     )}
-
                   </div>
                 </div>
-
               </div>
-
             </motion.div>
           </Reveal>
 
@@ -250,15 +255,15 @@ export const ExperienceSection: React.FC = () => {
             {/* Timeline line that grows from top */}
             <TimelineGrowLine />
 
-            <motion.div 
-              className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full"
+            <motion.div
+              className="grid w-full grid-cols-1 gap-8 md:grid-cols-2"
               variants={cardsContainerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-60px' }}
             >
               {experience.length === 0 && (
-                <div className="col-span-2 text-center py-12 rounded-xl border border-border/40 bg-surface/10">
+                <div className="border-border/40 bg-surface/10 col-span-2 rounded-xl border py-12 text-center">
                   <span className="text-muted-foreground text-xs font-semibold">
                     No employment history available.
                   </span>
@@ -267,7 +272,7 @@ export const ExperienceSection: React.FC = () => {
 
               {experience.map((item) => {
                 const isCurrent = !item.endDate;
-                
+
                 // Format period label
                 const startYearMonth = item.startDate.replace('-', '/');
                 const endYearMonth = isCurrent ? 'Present' : item.endDate?.replace('-', '/') || '';
@@ -277,7 +282,7 @@ export const ExperienceSection: React.FC = () => {
                   <motion.div
                     key={`${item.company}-${item.position}`}
                     variants={cardRevealVariant}
-                    className="w-full relative group"
+                    className="group relative w-full"
                   >
                     {/* Gradient Border Glassmorphic Wrapper */}
                     <motion.div
@@ -285,50 +290,49 @@ export const ExperienceSection: React.FC = () => {
                       whileTap={{ scale: 0.98 }}
                       transition={{ type: 'spring', stiffness: 260, damping: 20 }}
                       className={cn(
-                        "rounded-xl p-[1px] transition-all duration-300 ease-out shadow-sm h-full",
+                        'h-full rounded-xl p-[1px] shadow-sm transition-all duration-300 ease-out',
                         isCurrent
-                          ? "bg-gradient-to-tr from-emerald-500/15 via-border/50 to-primary/15 hover:from-emerald-500/40 hover:to-primary/40 hover:shadow-[0_8px_40px_rgba(16,185,129,0.12)]"
-                          : "bg-gradient-to-tr from-primary/10 via-border/50 to-accent/10 hover:from-primary/30 hover:to-accent/30 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)]"
+                          ? 'via-border/50 to-primary/15 hover:to-primary/40 bg-gradient-to-tr from-emerald-500/15 hover:from-emerald-500/40 hover:shadow-[0_8px_40px_rgba(16,185,129,0.12)]'
+                          : 'from-primary/10 via-border/50 to-accent/10 hover:from-primary/30 hover:to-accent/30 bg-gradient-to-tr hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)]'
                       )}
                     >
                       {/* Inner Card Container */}
-                      <div className="rounded-[11px] p-5 sm:p-6 bg-surface/20 backdrop-blur-xl flex flex-col gap-4 h-full">
-                        
+                      <div className="bg-surface/20 flex h-full flex-col gap-4 rounded-[11px] p-5 backdrop-blur-xl sm:p-6">
                         {/* Card Header details */}
-                        <div className="flex flex-col gap-1.5 w-full relative">
-                          <div className="flex items-center justify-between w-full flex-wrap gap-2">
-                            <span className="text-[9px] font-extrabold text-primary uppercase tracking-widest leading-none">
+                        <div className="relative flex w-full flex-col gap-1.5">
+                          <div className="flex w-full flex-wrap items-center justify-between gap-2">
+                            <span className="text-primary text-[9px] leading-none font-extrabold tracking-widest uppercase">
                               {item.employmentType}
                             </span>
-                            
+
                             {isCurrent ? (
-                              <span className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 text-[7px] font-bold uppercase tracking-widest border border-emerald-500/20 select-none">
+                              <span className="flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-[7px] font-bold tracking-widest text-emerald-500 uppercase select-none">
                                 <span className="relative flex h-1.5 w-1.5">
-                                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+                                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
                                 </span>
                                 Present
                               </span>
                             ) : (
-                              <span className="flex items-center gap-1 text-[9px] text-muted-foreground/60 font-semibold select-none">
-                                <Calendar className="w-3.5 h-3.5 mr-1" />
+                              <span className="text-muted-foreground/60 flex items-center gap-1 text-[9px] font-semibold select-none">
+                                <Calendar className="mr-1 h-3.5 w-3.5" />
                                 {periodString}
                               </span>
                             )}
                           </div>
 
                           {/* Job Title & Company details */}
-                          <h3 className="text-sm font-extrabold text-foreground mt-2 leading-none font-heading">
+                          <h3 className="text-foreground font-heading mt-2 text-sm leading-none font-extrabold">
                             {item.position}
                           </h3>
-                          
-                          <div className="flex items-center gap-2 text-[10px] text-muted-foreground/80 font-semibold leading-none flex-wrap">
+
+                          <div className="text-muted-foreground/80 flex flex-wrap items-center gap-2 text-[10px] leading-none font-semibold">
                             <span>{item.company}</span>
                             {item.location && (
                               <>
                                 <span>&bull;</span>
                                 <span className="flex items-center gap-0.5">
-                                  <MapPin className="w-3 h-3" />
+                                  <MapPin className="h-3 w-3" />
                                   {item.location}
                                 </span>
                               </>
@@ -337,24 +341,24 @@ export const ExperienceSection: React.FC = () => {
                         </div>
 
                         {/* Summary description */}
-                        <p className="text-xs text-muted-foreground/75 leading-relaxed border-t border-border/20 pt-3">
+                        <p className="text-muted-foreground/75 border-border/20 border-t pt-3 text-xs leading-relaxed">
                           {item.description}
                         </p>
 
                         {/* What I Worked On (Premium tag pills) */}
                         {item.workedOn && item.workedOn.length > 0 && (
-                          <div className="flex flex-col gap-2 mt-1 border-t border-border/10 pt-3">
-                            <span className="text-[9px] font-extrabold text-primary uppercase tracking-widest leading-none">
+                          <div className="border-border/10 mt-1 flex flex-col gap-2 border-t pt-3">
+                            <span className="text-primary text-[9px] leading-none font-extrabold tracking-widest uppercase">
                               What I Worked On
                             </span>
-                            <div className="flex flex-wrap gap-1.5 mt-1">
+                            <div className="mt-1 flex flex-wrap gap-1.5">
                               {item.workedOn.map((mod, i) => (
                                 <span
                                   key={i}
-                                  className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-foreground/[0.02] border border-border/40 text-[9px] text-muted-foreground/90 font-medium select-none"
+                                  className="bg-foreground/[0.02] border-border/40 text-muted-foreground/90 inline-flex items-center gap-1 rounded-md border px-2.5 py-0.5 text-[9px] font-medium select-none"
                                 >
-                                  <span className="w-1 h-1 rounded-full bg-emerald-500/70" />
-                                    {mod}
+                                  <span className="h-1 w-1 rounded-full bg-emerald-500/70" />
+                                  {mod}
                                 </span>
                               ))}
                             </div>
@@ -363,17 +367,20 @@ export const ExperienceSection: React.FC = () => {
 
                         {/* Achievements (Minimalist List) */}
                         {item.responsibilities && item.responsibilities.length > 0 && (
-                          <div className="flex flex-col gap-2 mt-1 border-t border-border/10 pt-3">
-                            <span className="text-[9px] font-extrabold text-primary uppercase tracking-widest leading-none">
+                          <div className="border-border/10 mt-1 flex flex-col gap-2 border-t pt-3">
+                            <span className="text-primary text-[9px] leading-none font-extrabold tracking-widest uppercase">
                               Achievements
                             </span>
-                            <ul className="space-y-2 mt-1">
+                            <ul className="mt-1 space-y-2">
                               {item.responsibilities.map((resp, i) => (
                                 <li
                                   key={i}
-                                  className="flex items-start gap-2.5 text-[10px] text-muted-foreground/85 leading-relaxed"
+                                  className="text-muted-foreground/85 flex items-start gap-2.5 text-[10px] leading-relaxed"
                                 >
-                                  <Sparkles className="w-3 h-3 text-primary/80 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                                  <Sparkles
+                                    className="text-primary/80 mt-0.5 h-3 w-3 flex-shrink-0"
+                                    aria-hidden="true"
+                                  />
                                   <span>{resp}</span>
                                 </li>
                               ))}
@@ -382,18 +389,17 @@ export const ExperienceSection: React.FC = () => {
                         )}
 
                         {/* Technologies Tags */}
-                        <div className="flex flex-wrap gap-1.5 mt-auto pt-3 border-t border-border/10">
+                        <div className="border-border/10 mt-auto flex flex-wrap gap-1.5 border-t pt-3">
                           {item.technologies.map((tech) => (
                             <Badge
                               key={tech}
                               variant="outline"
-                              className="py-0.5 px-2 text-[9px] font-bold uppercase tracking-widest bg-surface/30 border-border/40 select-none text-muted-foreground/80 hover:border-primary/20 hover:text-primary transition-colors duration-300"
+                              className="bg-surface/30 border-border/40 text-muted-foreground/80 hover:border-primary/20 hover:text-primary px-2 py-0.5 text-[9px] font-bold tracking-widest uppercase transition-colors duration-300 select-none"
                             >
                               {tech}
                             </Badge>
                           ))}
                         </div>
-
                       </div>
                     </motion.div>
                   </motion.div>
@@ -401,7 +407,6 @@ export const ExperienceSection: React.FC = () => {
               })}
             </motion.div>
           </div>
-
         </div>
       </Container>
     </Section>

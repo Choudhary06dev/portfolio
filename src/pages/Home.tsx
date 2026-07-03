@@ -22,12 +22,12 @@ const ContactSection = React.lazy(() =>
  * Prevents layout shifts (CLS) and matches portfolio design systems.
  */
 const SectionLoader: React.FC = () => (
-  <div className="mx-auto max-w-7xl px-4 py-16 md:py-24 sm:px-6 lg:px-8 flex flex-col gap-6 animate-pulse select-none pointer-events-none">
-    <div className="h-5 w-24 bg-border/20 rounded-md" />
-    <div className="h-10 w-2/3 bg-border/10 rounded-lg" />
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-      <div className="h-44 bg-surface/10 rounded-2xl border border-border/10" />
-      <div className="h-44 bg-surface/10 rounded-2xl border border-border/10" />
+  <div className="pointer-events-none mx-auto flex max-w-7xl animate-pulse flex-col gap-6 px-4 py-16 select-none sm:px-6 md:py-24 lg:px-8">
+    <div className="bg-border/20 h-5 w-24 rounded-md" />
+    <div className="bg-border/10 h-10 w-2/3 rounded-lg" />
+    <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div className="bg-surface/10 border-border/10 h-44 rounded-2xl border" />
+      <div className="bg-surface/10 border-border/10 h-44 rounded-2xl border" />
     </div>
   </div>
 );
@@ -43,26 +43,25 @@ const Home: React.FC = () => {
   // Configure production SEO metadata & structured data
   useSEO({
     title: 'Muhammad Amjad Subhani | Full Stack Laravel & React Developer',
-    description: 'Full Stack Developer specializing in Laravel, React, ERP Systems, REST APIs, and AI Solutions. Architecting premium, high-performance web applications.',
-    keywords: 'Laravel Developer, React Developer, Full Stack Developer, PHP, TypeScript, PostgreSQL, MySQL, REST API, ERP Development, AI Solutions, Software Engineer, Portfolio, Pakistan',
+    description:
+      'Full Stack Developer specializing in Laravel, React, ERP Systems, REST APIs, and AI Solutions. Architecting premium, high-performance web applications.',
+    keywords:
+      'Laravel Developer, React Developer, Full Stack Developer, PHP, TypeScript, PostgreSQL, MySQL, REST API, ERP Development, AI Solutions, Software Engineer, Portfolio, Pakistan',
     canonicalPath: '',
     schema: {
       '@context': 'https://schema.org',
       '@type': 'Person',
-      'name': 'Muhammad Amjad Subhani',
-      'jobTitle': 'Full Stack Laravel & React Developer',
-      'url': siteConfig.siteUrl || 'https://amjad.dev',
-      'sameAs': [
-        siteConfig.github,
-        siteConfig.linkedin
-      ],
-      'address': {
+      name: 'Muhammad Amjad Subhani',
+      jobTitle: 'Full Stack Laravel & React Developer',
+      url: siteConfig.siteUrl || 'https://amjad.dev',
+      sameAs: [siteConfig.github, siteConfig.linkedin],
+      address: {
         '@type': 'PostalAddress',
-        'addressLocality': 'Punjab',
-        'addressCountry': 'Pakistan'
+        addressLocality: 'Punjab',
+        addressCountry: 'Pakistan',
       },
-      'description': siteConfig.description
-    }
+      description: siteConfig.description,
+    },
   });
 
   useEffect(() => {

@@ -23,7 +23,7 @@ export interface ProjectType {
   role: string;
   company?: string;
   highlights?: readonly string[];
-  
+
   // Case Study specific fields
   overview?: string;
   problem?: string;

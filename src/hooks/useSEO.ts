@@ -8,7 +8,7 @@ export interface SEOProps {
   ogType?: string;
   ogImage?: string;
   canonicalPath?: string;
-  schema?: Record<string, any>;
+  schema?: Record<string, unknown>;
 }
 
 /**
@@ -32,7 +32,11 @@ export const useSEO = ({
     }
 
     // Helper to get or create element
-    const getOrCreateMeta = (selector: string, attrName: string, attrVal: string): HTMLMetaElement => {
+    const getOrCreateMeta = (
+      selector: string,
+      attrName: string,
+      attrVal: string
+    ): HTMLMetaElement => {
       let el = document.querySelector(selector) as HTMLMetaElement;
       if (!el) {
         el = document.createElement('meta');
@@ -89,7 +93,11 @@ export const useSEO = ({
     const twTitle = getOrCreateMeta('meta[name="twitter:title"]', 'name', 'twitter:title');
     if (title) twTitle.content = title;
 
-    const twDesc = getOrCreateMeta('meta[name="twitter:description"]', 'name', 'twitter:description');
+    const twDesc = getOrCreateMeta(
+      'meta[name="twitter:description"]',
+      'name',
+      'twitter:description'
+    );
     if (description) twDesc.content = description;
 
     const twImg = getOrCreateMeta('meta[name="twitter:image"]', 'name', 'twitter:image');

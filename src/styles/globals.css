@@ -94,7 +94,8 @@
 }
 
 /* Lenis smooth scroll CSS helpers */
-html.lenis, html.lenis body {
+html.lenis,
+html.lenis body {
   height: auto;
 }
 
@@ -110,3 +111,10 @@ html.lenis, html.lenis body {
   overscroll-behavior: contain;
 }
 
+/* Custom Cursor Active class to hide native cursor on devices with fine pointer (mouse) */
+@media (pointer: fine) {
+  body.custom-cursor-active,
+  body.custom-cursor-active * {
+    cursor: none !important;
+  }
+}

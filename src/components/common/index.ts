@@ -4,3 +4,4 @@ export { SectionSubtitle, type SectionSubtitleProps } from './SectionSubtitle';
 export { AnimatedText, type AnimatedTextProps } from './AnimatedText';
 export { Reveal, type RevealProps } from './Reveal';
 export { FloatingBlobs } from './FloatingBlobs';
+export { CustomCursor } from './CustomCursor';
