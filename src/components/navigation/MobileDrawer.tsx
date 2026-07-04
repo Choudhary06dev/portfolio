@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
 import { NavList } from './NavList';
 import { ThemeToggle } from './ThemeToggle';
 import { CTAButton } from './CTAButton';
+import { useLenisInstance } from '@/hooks/useLenis';
 
 export interface MobileDrawerProps {
   isOpen: boolean;
@@ -15,6 +17,7 @@ export interface MobileDrawerProps {
  */
 export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const lenis = useLenisInstance();
 
   // Close on Escape key press
   useEffect(() => {
@@ -32,9 +35,30 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
+  // Lock body scroll and pause Lenis smooth scroll when drawer is open
+  useEffect(() => {
+    if (!isOpen) return;
+
+    // Pause Lenis scrolling
+    if (lenis) {
+      lenis.stop();
+    }
+
+    // Fallback native scroll lock
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      if (lenis) {
+        lenis.start();
+      }
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [isOpen, lenis]);
+
   if (!isOpen) return null;
 
-  return (
+  return createPortal(
     <div className="tablet:hidden fixed inset-0 z-[100] flex" role="dialog" aria-modal="true">
       {/* Overlay backdrop */}
       <div
@@ -78,7 +102,8 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
           <CTAButton />
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 
