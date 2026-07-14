@@ -43,7 +43,7 @@ export const FloatingBlobs: React.FC = () => {
         className="bg-accent/5 absolute right-[15%] bottom-[20%] h-[40rem] w-[40rem] rounded-full blur-[140px]"
       />
 
-      {/* Blob 3: Pink/Glow */}
+      {/* Blob 3: Sage/Glow */}
       <motion.div
         animate={{
           x: [0, 30, -30, 0],
@@ -54,7 +54,7 @@ export const FloatingBlobs: React.FC = () => {
           repeat: Infinity,
           ease: 'easeInOut',
         }}
-        className="absolute top-[40%] right-[30%] h-[25rem] w-[25rem] rounded-full bg-[#ec4899]/5 blur-[100px]"
+        className="bg-secondary/10 absolute top-[40%] right-[30%] h-[25rem] w-[25rem] rounded-full blur-[100px]"
       />
     </div>
   );

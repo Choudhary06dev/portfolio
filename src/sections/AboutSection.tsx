@@ -268,10 +268,10 @@ export const AboutSection: React.FC = () => {
                 whileHover={{ y: -10, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-                className="group from-primary/25 via-border/50 hover:from-primary/40 relative cursor-pointer overflow-hidden rounded-xl bg-gradient-to-tr to-purple-500/10 p-[1px] shadow-xs transition-all duration-300 ease-out hover:to-purple-500/35 hover:shadow-[0_0_32px_rgba(139,92,246,0.15)]"
+                className="group from-primary/25 via-border/50 hover:from-primary/40 to-accent/10 hover:to-accent/35 relative cursor-pointer overflow-hidden rounded-xl bg-gradient-to-tr p-[1px] shadow-xs transition-all duration-300 ease-out hover:shadow-[0_0_32px_oklch(from_var(--accent)_l_c_h_/_0.15)]"
               >
                 {/* Soft backdrop blur and radial glow */}
-                <div className="from-primary/5 pointer-events-none absolute -inset-10 rounded-full bg-gradient-to-tr to-purple-500/5 opacity-20 blur-2xl transition-opacity duration-500 group-hover:opacity-50" />
+                <div className="from-primary/5 to-accent/5 pointer-events-none absolute -inset-10 rounded-full bg-gradient-to-tr opacity-20 blur-2xl transition-opacity duration-500 group-hover:opacity-50" />
 
                 <div className="bg-surface/20 relative flex flex-col gap-4 rounded-[11px] p-5 backdrop-blur-xl">
                   {/* Top Header line with Logo and Status Badge */}
