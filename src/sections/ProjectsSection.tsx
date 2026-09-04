@@ -164,7 +164,7 @@ export const ProjectsSection: React.FC = () => {
                     className={cn(
                       'group flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-md border shadow-sm transition-all duration-300 ease-out',
                       isFlagship
-                        ? 'border-primary/25 bg-primary/[0.01] hover:border-primary/50 hover:shadow-[0_8px_40px_rgba(139,92,246,0.12)]'
+                        ? 'border-primary/25 bg-primary/[0.01] hover:border-primary/50 hover:shadow-[0_8px_40px_rgba(56,189,248,0.20)]'
                         : 'border-border/40 bg-surface/20 hover:border-primary/25 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)]'
                     )}
                   >

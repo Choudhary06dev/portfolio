@@ -19,9 +19,10 @@ export const CTAButton: React.FC = () => {
     return (
       <Magnetic strength={0.25} range={50}>
         <Button
-          variant="outline"
+          variant="primary"
           size="sm"
           onClick={() => window.open(resumeUrl, '_blank', 'noopener,noreferrer')}
+          className="rounded-none border border-black/90 shadow-sm shadow-primary/25 hover:shadow-glow dark:border-black"
         >
           <FileDown className="mr-2 h-4 w-4" aria-hidden="true" />
           Resume
@@ -33,7 +34,11 @@ export const CTAButton: React.FC = () => {
   return (
     <Magnetic strength={0.25} range={50}>
       <Link to={resumeUrl} tabIndex={-1} className="focus-visible:outline-none">
-        <Button variant="outline" size="sm">
+        <Button
+          variant="primary"
+          size="sm"
+          className="rounded-none border border-black/90 shadow-sm shadow-primary/25 hover:shadow-glow dark:border-black"
+        >
           <FileDown className="mr-2 h-4 w-4" aria-hidden="true" />
           Resume
         </Button>

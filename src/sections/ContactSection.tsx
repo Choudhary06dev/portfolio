@@ -63,7 +63,7 @@ export const ContactSection: React.FC = () => {
       href: mailToUrl,
       external: false,
       iconColor: 'text-primary',
-      hoverGlow: 'hover:shadow-[0_8px_30px_rgba(139,92,246,0.12)]',
+      hoverGlow: 'hover:shadow-[0_8px_30px_rgba(56,189,248,0.20)]',
       hoverBorder: 'hover:border-primary/30',
       icon: (
         <svg

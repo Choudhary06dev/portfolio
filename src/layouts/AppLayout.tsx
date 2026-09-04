@@ -2,7 +2,7 @@ import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Header, Footer } from '@/components/navigation';
-import { FloatingBlobs, CustomCursor } from '@/components/common';
+import { FloatingBlobs /*, CustomCursor */ } from '@/components/common';
 
 /**
  * Structural Application Shell Layout.
@@ -13,7 +13,7 @@ const AppLayout: React.FC = () => {
 
   return (
     <div className="bg-background text-foreground relative flex min-h-screen flex-col transition-colors duration-300">
-      <CustomCursor />
+      {/* <CustomCursor /> -- Commented out to use native cursor pointer */}
       <FloatingBlobs />
       <Header />
       <main className="relative z-10 flex-1 pt-[72px]">

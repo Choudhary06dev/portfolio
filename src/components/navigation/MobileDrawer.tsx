@@ -88,7 +88,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
           <NavList
             direction="vertical"
             className="w-full"
-            itemClassName="flex w-full py-3 px-4 text-base text-muted-foreground hover:text-foreground rounded-md hover:bg-surface transition-colors"
+            itemClassName="flex w-full py-3 px-4 text-base font-medium text-foreground/80 hover:text-primary rounded-md hover:bg-primary/10 transition-colors"
             onItemClick={onClose}
           />
         </div>

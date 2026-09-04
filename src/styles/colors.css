@@ -1,57 +1,58 @@
-:root {
-  /* Semantic OKLCH Colors - Default Dark Mode */
-  --background: oklch(0.1 0.01 250); /* Deep Slate Black */
-  --foreground: oklch(0.95 0.015 250); /* Soft white */
-
-  --surface: oklch(0.14 0.015 250); /* Surface elements (e.g. Cards) */
-  --surface-hover: oklch(0.18 0.015 250);
-
-  --card: oklch(0.12 0.012 250);
-  --card-hover: oklch(0.16 0.015 250);
-
-  --border: oklch(0.32 0.012 250); /* Slate divider outlines */
-  --border-light: oklch(0.24 0.01 250);
-
-  --primary: oklch(0.64 0.17 195); /* Cyber Oceanic Teal Primary */
-  --primary-hover: oklch(0.57 0.17 195);
-
-  --secondary: oklch(0.78 0.12 165); /* Mint Sage Secondary */
-  --accent: oklch(0.76 0.13 85); /* Champagne Gold Accent */
-
-  --success: oklch(0.72 0.18 140); /* Emerald Green */
-  --warning: oklch(0.78 0.16 80); /* Soft Amber */
-  --danger: oklch(0.62 0.21 25); /* Crimson Red */
-
-  --muted: oklch(0.16 0.012 250);
-  --muted-foreground: oklch(0.62 0.02 250); /* Muted Slate Text */
-}
-
+:root,
 .light {
-  /* Semantic OKLCH Colors - Future Light Mode Architecture */
-  --background: oklch(0.99 0.005 250); /* Pure off-white background */
-  --foreground: oklch(0.16 0.015 250); /* Solid charcoal text */
+  /* Semantic OKLCH Colors - Default Radiant Light Mode (Crisp Snow White & Vivid Sky Blue) */
+  --background: oklch(0.99 0.005 230); /* Ultra-clean crisp snow white */
+  --foreground: oklch(0.15 0.035 250); /* Deep midnight navy text */
 
-  --surface: oklch(0.96 0.008 250);
-  --surface-hover: oklch(0.92 0.01 250);
+  --surface: oklch(0.96 0.012 230); /* Soft frosty sky surface */
+  --surface-hover: oklch(0.92 0.022 230);
 
-  --card: oklch(0.98 0.006 250);
-  --card-hover: oklch(0.94 0.008 250);
+  --card: oklch(1 0 0); /* Pure brilliant white */
+  --card-hover: oklch(0.97 0.015 230);
 
-  --border: oklch(0.88 0.01 250);
-  --border-light: oklch(0.94 0.005 250);
+  --border: oklch(0.88 0.02 230); /* Crisp subtle border */
+  --border-light: oklch(0.94 0.01 230);
 
-  --primary: oklch(0.58 0.17 195);
-  --primary-hover: oklch(0.51 0.17 195);
+  --primary: oklch(0.58 0.20 235); /* Vivid Sky Blue */
+  --primary-hover: oklch(0.50 0.22 235);
 
-  --secondary: oklch(0.7 0.12 165);
-  --accent: oklch(0.68 0.13 85);
+  --secondary: oklch(0.72 0.14 220); /* Soft Azure */
+  --accent: oklch(0.48 0.18 245); /* Deep Sky Indigo */
 
-  --success: oklch(0.65 0.18 140);
+  --success: oklch(0.65 0.18 145);
   --warning: oklch(0.74 0.16 80);
   --danger: oklch(0.56 0.21 25);
 
-  --muted: oklch(0.94 0.008 250);
-  --muted-foreground: oklch(0.48 0.015 250);
+  --muted: oklch(0.94 0.012 230);
+  --muted-foreground: oklch(0.46 0.03 240);
+}
+
+.dark {
+  /* Semantic OKLCH Colors - Dark Mode (Deep Midnight Sky & Radiant Sky Blue + Crisp White) */
+  --background: oklch(0.12 0.022 245); /* Deep slate sapphire black */
+  --foreground: oklch(0.98 0.005 240); /* Crisp brilliant pure white */
+
+  --surface: oklch(0.16 0.025 245); /* Frosted surface cards */
+  --surface-hover: oklch(0.20 0.032 245);
+
+  --card: oklch(0.14 0.024 245);
+  --card-hover: oklch(0.18 0.03 245);
+
+  --border: oklch(0.28 0.035 240); /* Translucent sky-slate outline */
+  --border-light: oklch(0.22 0.025 240);
+
+  --primary: oklch(0.70 0.18 230); /* Radiant Electric Sky Blue */
+  --primary-hover: oklch(0.63 0.19 230);
+
+  --secondary: oklch(0.84 0.12 215); /* Glacier Ice / Soft Cyan */
+  --accent: oklch(0.94 0.04 220); /* Pure Frosted Sky White / Shimmer */
+
+  --success: oklch(0.72 0.18 145); /* Emerald Green */
+  --warning: oklch(0.78 0.16 80); /* Soft Amber */
+  --danger: oklch(0.62 0.21 25); /* Crimson Red */
+
+  --muted: oklch(0.18 0.022 245);
+  --muted-foreground: oklch(0.72 0.025 240); /* Soft readable ice-slate */
 }
 
 @theme {

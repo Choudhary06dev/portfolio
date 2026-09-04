@@ -258,27 +258,27 @@ export const HeroSection: React.FC = () => {
           {/* Right Column: Profile Image — scales in and floats forever */}
           <div className="flex w-full items-center justify-center lg:col-span-5 lg:justify-end">
             <motion.div
-              className="relative aspect-square w-full max-w-sm lg:max-w-md"
+              className="group relative aspect-square w-full max-w-sm lg:max-w-md"
               initial={{ opacity: 0, scale: 0.88 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
             >
-              {/* Radial backglow behind the card */}
-              <div className="from-primary/5 to-accent/5 pointer-events-none absolute -inset-4 rounded-full bg-gradient-to-tr opacity-20 blur-3xl" />
+              {/* Radial backglow behind the card — radiant sky blue glow active by default */}
+              <div className="from-primary/25 via-secondary/20 to-primary/10 pointer-events-none absolute -inset-4 rounded-full bg-gradient-to-tr opacity-75 blur-3xl transition-opacity duration-700" />
 
               {/* Decorative radial border rings */}
-              <div className="border-border/20 pointer-events-none absolute top-1/2 left-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full border [mask-image:linear-gradient(to_bottom,black,transparent)]" />
+              <div className="border-primary/20 pointer-events-none absolute top-1/2 left-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full border [mask-image:linear-gradient(to_bottom,black,transparent)]" />
 
-              {/* Profile Image Card — gentle continuous float */}
+              {/* Profile Image Card — gentle continuous float with radiant sky blue border & glow */}
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                whileHover={{ scale: 1.03 }}
-                className="border-border/60 bg-surface/30 shadow-modal hover:border-primary/25 hover:shadow-card group relative flex h-full w-full items-center justify-center overflow-hidden rounded-2xl border p-3 backdrop-blur-md transition-all duration-300 ease-out"
+                whileHover={{ scale: 1.02 }}
+                className="border-primary/30 bg-surface/40 shadow-[0_0_35px_rgba(56,189,248,0.22)] relative flex h-full w-full items-center justify-center overflow-hidden rounded-2xl border p-3 backdrop-blur-md transition-all duration-500 ease-out hover:border-primary/50 hover:shadow-[0_0_45px_rgba(56,189,248,0.30)]"
               >
                 {/* Outer reflection overlay border */}
-                <div className="pointer-events-none absolute inset-0 rounded-2xl border border-white/5" />
+                <div className="pointer-events-none absolute inset-0 rounded-2xl border border-white/10" />
 
                 {/* Inner Image Container */}
                 <div className="bg-muted/10 relative h-full w-full overflow-hidden rounded-xl">
@@ -287,7 +287,7 @@ export const HeroSection: React.FC = () => {
                     alt={personal.fullName}
                     loading="eager"
                     fetchPriority="high"
-                    className="h-full w-full object-cover brightness-[0.98] contrast-[1.08] grayscale transition-all duration-700 ease-out group-hover:scale-[1.04] group-hover:brightness-100 group-hover:grayscale-0"
+                    className="sharp-img h-full w-full object-cover brightness-100 contrast-[1.04] transition-all duration-700 ease-out group-hover:scale-[1.03]"
                   />
                   {/* Glass refraction reflection overlay */}
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/10 opacity-20" />

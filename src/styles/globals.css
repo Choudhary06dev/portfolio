@@ -111,10 +111,11 @@ html.lenis body {
   overscroll-behavior: contain;
 }
 
-/* Custom Cursor Active class to hide native cursor on devices with fine pointer (mouse) */
+/* Custom Cursor Active class (Commented out - using default native cursor pointer)
 @media (pointer: fine) {
   body.custom-cursor-active,
   body.custom-cursor-active * {
     cursor: none !important;
   }
 }
+*/

@@ -31,11 +31,11 @@ export const NavItem: React.FC<NavItemProps> = ({
   const lenis = useLenisInstance();
 
   const baseClasses =
-    'text-sm font-medium transition-all duration-300 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm py-1.5 px-3 cursor-pointer';
+    'text-sm font-medium transition-all duration-300 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-md py-1.5 px-3.5 cursor-pointer';
 
   const activeClasses = isActive
-    ? 'text-primary font-semibold'
-    : 'text-muted-foreground hover:text-foreground';
+    ? 'text-primary font-bold'
+    : 'text-foreground/80 hover:text-primary';
 
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (onClick) onClick();
@@ -66,7 +66,7 @@ export const NavItem: React.FC<NavItemProps> = ({
       {isActive && (
         <motion.span
           layoutId="activeNavPill"
-          className="bg-primary/[0.08] border-primary/15 absolute inset-0 -z-10 rounded-md border"
+          className="bg-primary/15 border-primary/30 absolute inset-0 -z-10 rounded-md border shadow-[0_0_16px_rgba(56,189,248,0.22)]"
           transition={{ type: 'spring', stiffness: 380, damping: 30 }}
         />
       )}
@@ -74,7 +74,7 @@ export const NavItem: React.FC<NavItemProps> = ({
       {isHovered && !isActive && (
         <motion.span
           layoutId="hoverNavPill"
-          className="bg-foreground/[0.04] border-foreground/[0.03] absolute inset-0 -z-10 rounded-md border dark:border-white/[0.03] dark:bg-white/[0.04]"
+          className="bg-primary/[0.08] border-primary/20 absolute inset-0 -z-10 rounded-md border"
           transition={{ type: 'spring', stiffness: 380, damping: 28 }}
         />
       )}
