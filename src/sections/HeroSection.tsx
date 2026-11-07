@@ -176,10 +176,17 @@ export const HeroSection: React.FC = () => {
                     variant="primary"
                     size="lg"
                     onClick={handleScrollToProjects}
-                    className="font-semibold shadow-sm transition-all duration-300 ease-out hover:shadow-lg"
+                    className={[
+                      'font-semibold group',
+                      'shadow-[0_2px_12px_oklch(from_var(--primary)_l_c_h_/_0.25)]',
+                      'hover:shadow-[0_6px_28px_oklch(from_var(--primary)_l_c_h_/_0.40)]',
+                    ].join(' ')}
                   >
                     View Projects
-                    <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                    <ArrowRight
+                      className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                      aria-hidden="true"
+                    />
                   </Button>
                 </motion.div>
               </Magnetic>
@@ -193,10 +200,13 @@ export const HeroSection: React.FC = () => {
                     variant="outline"
                     size="lg"
                     onClick={handleDownloadResume}
-                    className="font-semibold transition-all duration-300 ease-out hover:shadow-lg"
+                    className="font-semibold group"
                   >
                     Download Resume
-                    <FileDown className="ml-2 h-4 w-4" aria-hidden="true" />
+                    <FileDown
+                      className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5"
+                      aria-hidden="true"
+                    />
                   </Button>
                 </motion.div>
               </Magnetic>

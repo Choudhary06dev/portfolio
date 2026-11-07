@@ -1,4 +1,11 @@
+# robots.txt — Muhammad Amjad Subhani Portfolio
+# https://portfolio-one-zeta-56.vercel.app
+
 User-agent: *
 Allow: /
 
-Sitemap: https://amjad.dev/sitemap.xml
+Disallow: /dist/
+Disallow: /.git/
+Disallow: /node_modules/
+
+Sitemap: https://portfolio-one-zeta-56.vercel.app/sitemap.xml

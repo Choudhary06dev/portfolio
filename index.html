@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <!-- Theme Initialization Script to Prevent Flicker -->
     <script>
       (function () {
@@ -23,43 +23,104 @@
         }
       })();
     </script>
-    
-    <!-- Primary Static SEO Meta Tags (Fallbacks for Crawlers) -->
-    <title>Muhammad Amjad Subhani | Full Stack Laravel & React Developer</title>
-    <meta name="description" content="Full Stack Developer specializing in Laravel, React, ERP Systems, REST APIs, and AI Solutions. Architecting premium, high-performance web applications." />
-    <meta name="keywords" content="Laravel Developer, React Developer, Full Stack Developer, PHP, TypeScript, PostgreSQL, MySQL, REST API, ERP Development, AI Solutions, Software Engineer, Portfolio, Pakistan" />
+
+    <!-- =====================================================
+         PRIMARY SEO META TAGS
+         Static fallback for crawlers (before JS loads)
+         ===================================================== -->
+    <title>Muhammad Amjad Subhani | Full Stack Laravel &amp; React Developer</title>
+    <meta name="description" content="Full Stack Developer specializing in Laravel, React, ERP Systems, REST APIs, and AI Solutions. 2+ years building scalable, high-performance web applications in Pakistan." />
+    <meta name="keywords" content="Muhammad Amjad Subhani, Laravel Developer, React Developer, Full Stack Developer, PHP Developer, TypeScript, PostgreSQL, MySQL, REST API, ERP Development, AI Solutions, Software Engineer, Web Developer Pakistan, Portfolio" />
     <meta name="author" content="Muhammad Amjad Subhani" />
-    <link rel="canonical" href="https://amjad.dev/" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="rating" content="general" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://portfolio-one-zeta-56.vercel.app/" />
+
+    <!-- =====================================================
+         OPEN GRAPH — Facebook, LinkedIn, WhatsApp preview
+         ===================================================== -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Muhammad Amjad Subhani Portfolio" />
-    <meta property="og:url" content="https://amjad.dev/" />
-    <meta property="og:title" content="Muhammad Amjad Subhani | Full Stack Laravel & React Developer" />
-    <meta property="og:description" content="Full Stack Developer specializing in Laravel, React, ERP Systems, REST APIs, and AI Solutions. Architecting premium, high-performance web applications." />
-    <meta property="og:image" content="https://amjad.dev/og-image.png" />
+    <meta property="og:site_name" content="Muhammad Amjad Subhani | Portfolio" />
+    <meta property="og:url" content="https://portfolio-one-zeta-56.vercel.app/" />
+    <meta property="og:title" content="Muhammad Amjad Subhani | Full Stack Laravel &amp; React Developer" />
+    <meta property="og:description" content="Full Stack Developer specializing in Laravel, React, ERP Systems, REST APIs, and AI Solutions. Building scalable enterprise applications from Pakistan." />
+    <meta property="og:image" content="https://portfolio-one-zeta-56.vercel.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Muhammad Amjad Subhani — Full Stack Laravel &amp; React Developer" />
+    <meta property="og:locale" content="en_US" />
 
-    <!-- Twitter -->
+    <!-- =====================================================
+         TWITTER CARD
+         ===================================================== -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:creator" content="@muhammadamjadsubhani" />
-    <meta name="twitter:title" content="Muhammad Amjad Subhani | Full Stack Laravel & React Developer" />
-    <meta name="twitter:description" content="Full Stack Developer specializing in Laravel, React, ERP Systems, REST APIs, and AI Solutions. Architecting premium, high-performance web applications." />
-    <meta name="twitter:image" content="https://amjad.dev/og-image.png" />
+    <meta name="twitter:site" content="@amjadsubhani" />
+    <meta name="twitter:creator" content="@amjadsubhani" />
+    <meta name="twitter:title" content="Muhammad Amjad Subhani | Full Stack Laravel &amp; React Developer" />
+    <meta name="twitter:description" content="Full Stack Developer specializing in Laravel, React, ERP Systems, REST APIs, and AI Solutions." />
+    <meta name="twitter:image" content="https://portfolio-one-zeta-56.vercel.app/og-image.png" />
+    <meta name="twitter:image:alt" content="Muhammad Amjad Subhani Portfolio" />
 
-    <!-- Favicon & PWA App Manifest -->
+    <!-- =====================================================
+         JSON-LD STRUCTURED DATA — Schema.org Person
+         Helps Google understand who you are
+         ===================================================== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Muhammad Amjad Subhani",
+      "jobTitle": "Full Stack Laravel & React Developer",
+      "description": "Full Stack Developer specializing in Laravel, React, ERP Systems, REST APIs, and AI Solutions with 2+ years of professional experience.",
+      "url": "https://portfolio-one-zeta-56.vercel.app/",
+      "image": "https://portfolio-one-zeta-56.vercel.app/Amjad.png",
+      "email": "amjad.softdev@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Punjab",
+        "addressCountry": "PK"
+      },
+      "sameAs": [
+        "https://github.com/choudhary06dev",
+        "https://linkedin.com/in/choudhary06dev"
+      ],
+      "knowsAbout": [
+        "Laravel", "React", "PHP", "TypeScript", "PostgreSQL",
+        "MySQL", "REST APIs", "ERP Systems", "AI Integration",
+        "Full Stack Development", "Web Development"
+      ],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Nexer Technology Solutions"
+      }
+    }
+    </script>
+
+    <!-- =====================================================
+         FAVICON & PWA
+         ===================================================== -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#0ea5e9" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Amjad Subhani" />
 
-    <!-- Preload Hero above-the-fold Image -->
+    <!-- Preload Hero Image (above-the-fold — highest priority) -->
     <link rel="preload" as="image" href="/Amjad.png" fetchpriority="high" />
 
-    <!-- Google Fonts for parallel CSS/Font loading -->
+    <!-- Google Fonts preconnect + load -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&amp;family=Inter:wght@300;400;500;600;700&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" />
   </head>
   <body>
     <div id="root"></div>

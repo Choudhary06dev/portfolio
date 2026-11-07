@@ -15,6 +15,7 @@ export interface NavItemProps extends NavItemType {
 
 /**
  * Reusable navigation link component.
+ * Modern CSS: active sliding pill, hover shimmer overlay, smooth spring transitions.
  * Supports active highlighting, sliding hover capsules, and smooth scroll via Lenis.
  */
 export const NavItem: React.FC<NavItemProps> = ({
@@ -30,8 +31,16 @@ export const NavItem: React.FC<NavItemProps> = ({
   const navigate = useNavigate();
   const lenis = useLenisInstance();
 
-  const baseClasses =
-    'text-sm font-medium transition-all duration-300 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-md py-1.5 px-3.5 cursor-pointer';
+  const baseClasses = [
+    /* Layout & typography */
+    'relative inline-flex items-center justify-center',
+    'rounded-md py-1.5 px-3.5',
+    'text-sm font-medium cursor-pointer',
+    /* Transitions — multi-property smooth */
+    'transition-[color,background-color,box-shadow] duration-200 ease-out',
+    /* Focus ring */
+    'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
+  ].join(' ');
 
   const activeClasses = isActive
     ? 'text-primary font-bold'
@@ -45,7 +54,6 @@ export const NavItem: React.FC<NavItemProps> = ({
       const targetId = href.replace('#', '');
 
       if (location.pathname === '/') {
-        // Homepage: Smooth scroll using Lenis
         const targetElement = document.getElementById(targetId);
         if (targetElement && lenis) {
           lenis.scrollTo(targetElement, { offset: -20 });
@@ -53,31 +61,48 @@ export const NavItem: React.FC<NavItemProps> = ({
           targetElement.scrollIntoView({ behavior: 'smooth' });
         }
       } else {
-        // Subpage: Navigate to Home + hash segment
         navigate(`/${href}`);
       }
     }
   };
 
-  /** Shared underline + active pill */
+  /** Active pill + hover pill decorations */
   const renderDecorations = () => (
     <>
-      {/* Active background pill — slides between nav items */}
+      {/* Active background pill — slides between nav items with spring */}
       {isActive && (
         <motion.span
           layoutId="activeNavPill"
-          className="bg-primary/15 border-primary/30 absolute inset-0 -z-10 rounded-md border shadow-[0_0_16px_rgba(56,189,248,0.22)]"
+          className={[
+            'absolute inset-0 -z-10 rounded-md',
+            'bg-primary/12 border border-primary/25',
+            'shadow-[0_0_16px_oklch(from_var(--primary)_l_c_h_/_0.20)]',
+          ].join(' ')}
           transition={{ type: 'spring', stiffness: 380, damping: 30 }}
         />
       )}
-      {/* Hover background pill — slides smoothly behind links */}
+      {/* Hover background pill — slides smoothly */}
       {isHovered && !isActive && (
         <motion.span
           layoutId="hoverNavPill"
-          className="bg-primary/[0.08] border-primary/20 absolute inset-0 -z-10 rounded-md border"
+          className={[
+            'absolute inset-0 -z-10 rounded-md',
+            'bg-primary/[0.07] border border-primary/15',
+          ].join(' ')}
           transition={{ type: 'spring', stiffness: 380, damping: 28 }}
         />
       )}
+      {/* Shimmer sweep overlay — always rendered, animates on hover via CSS */}
+      <span
+        aria-hidden="true"
+        className={[
+          'pointer-events-none absolute inset-0 rounded-md overflow-hidden',
+          'before:absolute before:inset-0',
+          'before:translate-x-[-120%] hover:before:translate-x-[120%]',
+          'before:transition-transform before:duration-500 before:ease-out',
+          'before:bg-gradient-to-r before:from-transparent before:via-primary/8 before:to-transparent',
+        ].join(' ')}
+      />
     </>
   );
 
@@ -89,7 +114,7 @@ export const NavItem: React.FC<NavItemProps> = ({
           target="_blank"
           rel="noopener noreferrer"
           onClick={onClick}
-          className={cn('group relative', baseClasses, activeClasses, className)}
+          className={cn('group', baseClasses, activeClasses, className)}
         >
           <span className="relative z-10">{label}</span>
           {renderDecorations()}
@@ -104,7 +129,7 @@ export const NavItem: React.FC<NavItemProps> = ({
         <a
           href={href}
           onClick={handleAnchorClick}
-          className={cn('group relative', baseClasses, activeClasses, className)}
+          className={cn('group', baseClasses, activeClasses, className)}
         >
           <span className="relative z-10">{label}</span>
           {renderDecorations()}
@@ -118,7 +143,7 @@ export const NavItem: React.FC<NavItemProps> = ({
       <Link
         to={href}
         onClick={onClick}
-        className={cn('group relative', baseClasses, activeClasses, className)}
+        className={cn('group', baseClasses, activeClasses, className)}
       >
         <span className="relative z-10">{label}</span>
         {renderDecorations()}

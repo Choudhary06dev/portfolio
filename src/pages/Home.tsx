@@ -44,23 +44,34 @@ const Home: React.FC = () => {
   useSEO({
     title: 'Muhammad Amjad Subhani | Full Stack Laravel & React Developer',
     description:
-      'Full Stack Developer specializing in Laravel, React, ERP Systems, REST APIs, and AI Solutions. Architecting premium, high-performance web applications.',
+      'Full Stack Developer specializing in Laravel, React, ERP Systems, REST APIs, and AI Solutions. 2+ years building scalable web applications in Pakistan.',
     keywords:
-      'Laravel Developer, React Developer, Full Stack Developer, PHP, TypeScript, PostgreSQL, MySQL, REST API, ERP Development, AI Solutions, Software Engineer, Portfolio, Pakistan',
+      'Muhammad Amjad Subhani, Laravel Developer, React Developer, Full Stack Developer, PHP Developer, TypeScript, PostgreSQL, MySQL, REST API, ERP Development, AI Solutions, Software Engineer, Web Developer Pakistan, Portfolio',
     canonicalPath: '',
     schema: {
       '@context': 'https://schema.org',
       '@type': 'Person',
       name: 'Muhammad Amjad Subhani',
       jobTitle: 'Full Stack Laravel & React Developer',
-      url: siteConfig.siteUrl || 'https://amjad.dev',
-      sameAs: [siteConfig.github, siteConfig.linkedin],
+      url: siteConfig.siteUrl,
+      image: `${siteConfig.siteUrl}/Amjad.png`,
+      email: 'amjad.softdev@gmail.com',
+      sameAs: [siteConfig.github, siteConfig.linkedin].filter(Boolean),
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Punjab',
-        addressCountry: 'Pakistan',
+        addressCountry: 'PK',
       },
-      description: siteConfig.description,
+      description:
+        'Full Stack Developer specializing in Laravel, React, ERP Systems, REST APIs, and AI Solutions with 2+ years of professional experience.',
+      knowsAbout: [
+        'Laravel', 'React', 'PHP', 'TypeScript', 'PostgreSQL',
+        'MySQL', 'REST APIs', 'ERP Systems', 'AI Integration',
+      ],
+      worksFor: {
+        '@type': 'Organization',
+        name: 'Nexer Technology Solutions',
+      },
     },
   });
 

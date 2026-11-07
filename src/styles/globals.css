@@ -1,3 +1,43 @@
+/* ============================================================
+   globals.css  — Modern CSS Foundation (2025 Cutting-Edge)
+   ============================================================ */
+
+/* @property declarations for type-safe animated custom properties */
+@property --shimmer-pos {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: -100%;
+}
+
+@property --glow-opacity {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --btn-gradient-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 135deg;
+}
+
+@property --card-glow-size {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* ============================================================
+   @layer organization
+   ============================================================ */
+@layer base, components, utilities, animations;
+
 @layer base {
   html {
     scroll-behavior: auto;
@@ -5,6 +45,7 @@
     overflow-x: hidden;
     height: auto;
     min-height: 100%;
+    text-size-adjust: 100%;
   }
 
   body {
@@ -28,22 +69,33 @@
     flex-direction: column;
   }
 
-  /* Custom Selection Highlight Color */
+  /* Modern text wrapping */
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Custom Selection Highlight */
   ::selection {
-    background-color: oklch(from var(--primary) l c h / 0.2);
+    background-color: color-mix(in oklch, var(--primary) 20%, transparent);
     color: var(--primary);
   }
 
-  /* Focus Ring Global Rules */
+  /* Focus Ring */
   *:focus-visible {
     outline: 2px solid var(--primary);
-    outline-offset: 2px;
+    outline-offset: 3px;
+    border-radius: 4px;
+    transition: outline-offset 0.15s ease;
   }
 
-  /* Custom Scrollbar Styles */
+  /* Custom Scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
   }
 
   ::-webkit-scrollbar-track {
@@ -51,49 +103,445 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--border);
-    border-radius: var(--radius-full);
+    background: color-mix(in oklch, var(--primary) 30%, var(--border));
+    border-radius: 999px;
+    transition: background 0.3s ease;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--border-light);
+    background: color-mix(in oklch, var(--primary) 55%, var(--border));
+  }
+
+  /* Smooth scroll for lenis */
+  @supports (scrollbar-gutter: stable) {
+    html {
+      scrollbar-gutter: stable;
+    }
   }
 }
 
-/* Sharp images rendering utility (Visual audit fix) */
-.sharp-img {
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  backface-visibility: hidden;
-  transform: translateZ(0);
-  -webkit-font-smoothing: subpixel-antialiased;
+/* ============================================================
+   BUTTON SYSTEM — Modern shimmer, ripple, glow animations
+   ============================================================ */
+@layer components {
+
+  /* Primary Button — animated gradient + shimmer sweep */
+  .btn-primary-modern {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: linear-gradient(
+      var(--btn-gradient-angle),
+      var(--primary),
+      color-mix(in oklch, var(--primary) 80%, var(--accent))
+    );
+    transition:
+      --btn-gradient-angle 0.6s ease,
+      box-shadow 0.3s var(--ease-out-expo),
+      transform 0.2s var(--ease-bounce-spring);
+  }
+
+  .btn-primary-modern::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 20%,
+      color-mix(in oklch, white 25%, transparent) 50%,
+      transparent 80%
+    );
+    translate: -120% 0;
+    transition: translate 0.6s var(--ease-out-expo);
+  }
+
+  .btn-primary-modern:hover::before {
+    translate: 120% 0;
+  }
+
+  .btn-primary-modern::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at center,
+      color-mix(in oklch, white 15%, transparent) 0%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .btn-primary-modern:hover::after {
+    opacity: 1;
+  }
+
+  .btn-primary-modern:hover {
+    --btn-gradient-angle: 165deg;
+    box-shadow:
+      0 0 0 1px color-mix(in oklch, var(--primary) 50%, transparent),
+      0 4px 20px color-mix(in oklch, var(--primary) 40%, transparent),
+      0 8px 40px color-mix(in oklch, var(--primary) 20%, transparent);
+  }
+
+  /* Outline Button — border shimmer on hover */
+  .btn-outline-modern {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: transparent;
+    border: 1px solid var(--border);
+    transition:
+      border-color 0.3s ease,
+      background 0.3s ease,
+      box-shadow 0.3s ease,
+      color 0.3s ease;
+  }
+
+  .btn-outline-modern::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 20%,
+      color-mix(in oklch, var(--primary) 8%, transparent) 50%,
+      transparent 80%
+    );
+    --shimmer-pos: -120%;
+    translate: var(--shimmer-pos) 0;
+    transition: --shimmer-pos 0.7s var(--ease-out-expo);
+  }
+
+  .btn-outline-modern:hover::before {
+    --shimmer-pos: 120%;
+  }
+
+  .btn-outline-modern:hover {
+    border-color: color-mix(in oklch, var(--primary) 50%, transparent);
+    background: color-mix(in oklch, var(--primary) 5%, transparent);
+    box-shadow: 0 0 20px color-mix(in oklch, var(--primary) 15%, transparent);
+  }
+
+  /* Ghost Button */
+  .btn-ghost-modern {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: transparent;
+    transition:
+      background 0.25s ease,
+      color 0.25s ease;
+  }
+
+  .btn-ghost-modern::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: color-mix(in oklch, var(--primary) 8%, transparent);
+    opacity: 0;
+    transform: scale(0.8);
+    border-radius: inherit;
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s var(--ease-bounce-spring);
+  }
+
+  .btn-ghost-modern:hover::before {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-/* Footer Top Border Infinite Sliding Train Animation */
-@keyframes border-train {
-  0% {
-    background-position: 200% 0;
+/* ============================================================
+   GLOBAL KEYFRAME ANIMATIONS
+   ============================================================ */
+@layer animations {
+
+  /* Shimmer sweep — horizontal gloss effect */
+  @keyframes shimmer-sweep {
+    0%   { translate: -150% 0; }
+    100% { translate: 150% 0; }
   }
-  100% {
-    background-position: -200% 0;
+
+  /* Pulse glow ring */
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 0 0 color-mix(in oklch, var(--primary) 40%, transparent);
+    }
+    50% {
+      box-shadow: 0 0 0 8px color-mix(in oklch, var(--primary) 0%, transparent);
+    }
+  }
+
+  /* Float vertical bob */
+  @keyframes float-bob {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-10px); }
+  }
+
+  /* Gradient angle rotation */
+  @keyframes gradient-rotate {
+    0%   { --border-angle: 0deg; }
+    100% { --border-angle: 360deg; }
+  }
+
+  /* Footer border train animation */
+  @keyframes border-train {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* Fade-in-up entry */
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      translate: 0 24px;
+    }
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+
+  /* Scale-in entry */
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      scale: 0.92;
+    }
+    to {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+
+  /* Ping expand (availability indicator) */
+  @keyframes ping-expand {
+    75%, 100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+
+  /* Soft pulse */
+  @keyframes soft-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.5; }
+  }
+
+  /* Text shimmer gradient sweep */
+  @keyframes text-shimmer {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Spinning (slow) for React logo etc */
+  @keyframes spin-slow {
+    from { rotate: 0deg; }
+    to   { rotate: 360deg; }
+  }
+
+  /* Scroll down indicator bounce */
+  @keyframes bounce-down {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(6px); }
+  }
+
+  /* Stagger fade-in for grid items */
+  @keyframes stagger-in {
+    from {
+      opacity: 0;
+      translate: 0 20px;
+      scale: 0.96;
+    }
+    to {
+      opacity: 1;
+      translate: 0 0;
+      scale: 1;
+    }
+  }
+
+  /* Card hover lift shimmer */
+  @keyframes card-shimmer {
+    0%   { translate: -150% -150%; }
+    100% { translate: 150% 150%; }
+  }
+
+  /* Rotating conic border gradient */
+  @keyframes conic-rotate {
+    to { --border-angle: 360deg; }
+  }
+
+  /* Ripple effect */
+  @keyframes ripple-out {
+    0%   { transform: scale(0); opacity: 0.6; }
+    100% { transform: scale(4); opacity: 0; }
   }
 }
 
+/* ============================================================
+   COMPONENT UTILITY CLASSES
+   ============================================================ */
+@layer utilities {
+
+  /* Sharp image rendering */
+  .sharp-img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-font-smoothing: subpixel-antialiased;
+  }
+
+  /* Animated gradient text */
+  .gradient-text-animated {
+    background: linear-gradient(
+      in oklch 90deg,
+      var(--primary),
+      var(--accent),
+      var(--secondary),
+      var(--primary)
+    );
+    background-size: 300% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: text-shimmer 4s ease infinite;
+  }
+
+  /* Glass morphism card */
+  .glass-card {
+    background: color-mix(in oklch, var(--surface) 60%, transparent);
+    border: 1px solid color-mix(in oklch, var(--border) 50%, transparent);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+  }
+
+  /* Spinning conic animated border */
+  .animated-border {
+    --border-angle: 0deg;
+    animation: conic-rotate 4s linear infinite;
+    background:
+      conic-gradient(
+        from var(--border-angle),
+        transparent 70%,
+        color-mix(in oklch, var(--primary) 80%, transparent),
+        transparent
+      )
+      border-box;
+    border: 1px solid transparent;
+  }
+
+  /* Pulse glow button ring */
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  /* Floating element */
+  .float-animate {
+    animation: float-bob 5s ease-in-out infinite;
+  }
+
+  /* Entry animations via @starting-style */
+  .entry-fade-up {
+    animation: fade-in-up 0.6s var(--ease-out-expo) both;
+  }
+
+  .entry-scale-in {
+    animation: scale-in 0.5s var(--ease-out-expo) both;
+  }
+
+  /* Card with shimmer overlay on hover */
+  .card-hover-shimmer {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .card-hover-shimmer::after {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    background: linear-gradient(
+      105deg,
+      transparent 20%,
+      color-mix(in oklch, white 6%, transparent) 50%,
+      transparent 80%
+    );
+    translate: -150% -150%;
+    transition: translate 0s;
+    pointer-events: none;
+  }
+
+  .card-hover-shimmer:hover::after {
+    animation: card-shimmer 0.7s var(--ease-out-expo) forwards;
+  }
+
+  /* Ripple effect container */
+  .ripple-container {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ripple-container::after {
+    content: '';
+    position: absolute;
+    inset: 50%;
+    width: 10px;
+    height: 10px;
+    margin: -5px;
+    border-radius: 50%;
+    background: color-mix(in oklch, white 30%, transparent);
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  .ripple-container:active::after {
+    animation: ripple-out 0.5s ease forwards;
+  }
+
+  /* @starting-style for popover/modal entries */
+  @starting-style {
+    .entry-fade-up {
+      opacity: 0;
+      translate: 0 24px;
+    }
+
+    .entry-scale-in {
+      opacity: 0;
+      scale: 0.92;
+    }
+  }
+
+  /* contains optimization */
+  .perf-contain {
+    contain: layout style;
+  }
+}
+
+/* ============================================================
+   FOOTER BORDER TRAIN ANIMATION
+   ============================================================ */
 .footer-border-train {
   background-image: linear-gradient(
     90deg,
     transparent 0%,
-    oklch(from var(--primary) l c h / 0.15) 20%,
-    oklch(from var(--primary) l c h / 0.7) 45%,
-    oklch(from var(--accent) l c h / 0.7) 55%,
-    oklch(from var(--primary) l c h / 0.15) 80%,
+    color-mix(in oklch, var(--primary) 15%, transparent) 20%,
+    color-mix(in oklch, var(--primary) 70%, transparent) 45%,
+    color-mix(in oklch, var(--accent) 70%, transparent) 55%,
+    color-mix(in oklch, var(--primary) 15%, transparent) 80%,
     transparent 100%
   );
   background-size: 200% 100%;
   animation: border-train 6s linear infinite;
 }
 
-/* Lenis smooth scroll CSS helpers */
+/* ============================================================
+   LENIS SMOOTH SCROLL
+   ============================================================ */
 html.lenis,
 html.lenis body {
   height: auto;
@@ -110,12 +558,3 @@ html.lenis body {
 .lenis.lenis-smooth [data-lenis-prevent] {
   overscroll-behavior: contain;
 }
-
-/* Custom Cursor Active class (Commented out - using default native cursor pointer)
-@media (pointer: fine) {
-  body.custom-cursor-active,
-  body.custom-cursor-active * {
-    cursor: none !important;
-  }
-}
-*/

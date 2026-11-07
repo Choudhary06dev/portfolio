@@ -320,7 +320,12 @@ export const ContactSection: React.FC = () => {
                     <Button
                       variant="primary"
                       onClick={() => handleOpenLink(mailToUrl)}
-                      className="h-10 w-full rounded-lg text-xs font-bold tracking-wider uppercase transition-all duration-300 ease-out hover:shadow-[0_6px_24px_rgba(139,92,246,0.2)]"
+                      className={[
+                        'h-10 w-full rounded-lg text-xs font-bold tracking-wider uppercase',
+                        'group',
+                        'shadow-[0_2px_12px_oklch(from_var(--primary)_l_c_h_/_0.25)]',
+                        'hover:shadow-[0_6px_28px_oklch(from_var(--primary)_l_c_h_/_0.40)]',
+                      ].join(' ')}
                     >
                       Send Email
                     </Button>
@@ -335,7 +340,13 @@ export const ContactSection: React.FC = () => {
                     <Button
                       variant="outline"
                       onClick={() => handleOpenLink(whatsappUrl)}
-                      className="border-border h-10 w-full rounded-lg text-xs font-bold tracking-wider uppercase transition-all duration-300 ease-out hover:border-emerald-500/25 hover:text-emerald-500 hover:shadow-[0_6px_24px_rgba(37,211,102,0.1)]"
+                      className={[
+                        'border-border h-10 w-full rounded-lg text-xs font-bold tracking-wider uppercase',
+                        'group',
+                        'hover:border-[#25D366]/30 hover:text-[#25D366]',
+                        'hover:shadow-[0_6px_24px_rgba(37,211,102,0.15)]',
+                        'transition-[border-color,color,box-shadow] duration-300 ease-out',
+                      ].join(' ')}
                     >
                       Chat on WhatsApp
                     </Button>

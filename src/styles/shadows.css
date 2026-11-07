@@ -5,6 +5,19 @@
   --shadow-modal: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
   --shadow-floating: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
 
-  /* Sky Blue Ambient & Highlight Glow */
-  --shadow-glow: 0 0 25px 3px rgba(56, 189, 248, 0.22);
+  /* Primary glow */
+  --shadow-glow: 0 0 25px 3px oklch(from var(--primary) l c h / 0.22);
+  --shadow-glow-sm: 0 0 12px 2px oklch(from var(--primary) l c h / 0.18);
+  --shadow-glow-lg: 0 0 50px 8px oklch(from var(--primary) l c h / 0.25);
+
+  /* Accent glow */
+  --shadow-accent-glow: 0 0 25px 3px oklch(from var(--accent) l c h / 0.18);
+
+  /* Button shadows */
+  --shadow-btn-primary:
+    0 2px 8px oklch(from var(--primary) l c h / 0.3),
+    0 1px 2px oklch(from var(--primary) l c h / 0.2);
+  --shadow-btn-primary-hover:
+    0 4px 20px oklch(from var(--primary) l c h / 0.4),
+    0 8px 40px oklch(from var(--primary) l c h / 0.2);
 }

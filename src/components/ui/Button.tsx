@@ -8,8 +8,9 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 }
 
 /**
- * Reusable UI Button.
- * Fully typesafe, keyboard accessible, and supports visual design states.
+ * Modern CSS Button — shimmer sweeps, ripple press, glow effects.
+ * Uses @property animated custom properties, ::before shimmer, ::after radial glow.
+ * Fully keyboard accessible, aria-compliant, type-safe.
  */
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -32,24 +33,39 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={disabled || isLoading}
         aria-busy={isLoading}
         className={cn(
-          'inline-flex cursor-pointer items-center justify-center rounded-md font-sans text-sm font-medium tracking-wide transition-all duration-300 ease-out select-none focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50',
+          /* ── Base — shared across all variants ── */
+          'inline-flex cursor-pointer items-center justify-center rounded-md',
+          'font-sans text-sm font-medium tracking-wide',
+          'transition-all duration-300 ease-out select-none',
+          'focus-visible:outline-2 focus-visible:outline-offset-2',
+          'disabled:pointer-events-none disabled:opacity-50',
+          /* Ripple press effect class */
+          'ripple-container',
           {
-            /* Variants mapping */
-            'bg-primary hover:bg-primary-hover focus-visible:outline-primary text-white shadow-sm':
+            /* ── Primary: shimmer sweep + gradient + glow ── */
+            'btn-primary-modern text-white focus-visible:outline-primary shadow-sm':
               variant === 'primary',
+
+            /* ── Secondary ── */
             'bg-secondary text-foreground hover:bg-secondary/90 focus-visible:outline-secondary shadow-sm':
               variant === 'secondary',
-            'border-border hover:bg-surface hover:text-foreground focus-visible:outline-border border bg-transparent':
+
+            /* ── Outline: border shimmer + fill reveal ── */
+            'btn-outline-modern text-foreground focus-visible:outline-border':
               variant === 'outline',
-            'text-muted-foreground hover:bg-surface hover:text-foreground focus-visible:outline-border':
+
+            /* ── Ghost: subtle bg reveal ── */
+            'btn-ghost-modern text-muted-foreground hover:text-foreground focus-visible:outline-border':
               variant === 'ghost',
-            'bg-danger hover:bg-danger/90 focus-visible:outline-danger text-white shadow-sm':
+
+            /* ── Danger ── */
+            'relative overflow-hidden bg-danger text-white shadow-sm focus-visible:outline-danger':
               variant === 'danger',
 
-            /* Sizes mapping */
-            'h-9 px-3 py-1.5 text-xs': size === 'sm',
-            'h-10 px-4 py-2': size === 'md',
-            'h-11 px-6 py-2.5 text-base': size === 'lg',
+            /* ── Sizes ── */
+            'h-9 px-3 py-1.5 text-xs':     size === 'sm',
+            'h-10 px-4 py-2':               size === 'md',
+            'h-11 px-6 py-2.5 text-base':  size === 'lg',
           },
           className
         )}
@@ -61,7 +77,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             aria-hidden="true"
           />
         ) : null}
-        {children}
+        {/* z-10 wrapper keeps text above ::before/::after pseudo layers */}
+        <span className="relative z-10 inline-flex items-center">
+          {children}
+        </span>
       </button>
     );
   }

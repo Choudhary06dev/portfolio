@@ -258,7 +258,13 @@ export const ProjectsSection: React.FC = () => {
                               variant="outline"
                               size="sm"
                               onClick={() => handleOpenLink(project.githubUrl)}
-                              className="hover:border-primary/30 hover:text-primary flex h-7 items-center px-2.5 py-1 text-[10px] font-semibold transition-all duration-300 ease-out"
+                              className={[
+                                'flex h-7 items-center px-2.5 py-1 text-[10px] font-semibold',
+                                'hover:border-primary/30 hover:text-primary',
+                                'hover:shadow-[0_0_12px_oklch(from_var(--primary)_l_c_h_/_0.15)]',
+                                'transition-[border-color,color,box-shadow] duration-250 ease-out',
+                                'group',
+                              ].join(' ')}
                             >
                               {Icons.Github}
                               Code
@@ -269,7 +275,13 @@ export const ProjectsSection: React.FC = () => {
                               variant="outline"
                               size="sm"
                               onClick={() => handleOpenLink(project.demoUrl)}
-                              className="hover:border-primary/30 hover:text-primary flex h-7 items-center px-2.5 py-1 text-[10px] font-semibold transition-all duration-300 ease-out"
+                              className={[
+                                'flex h-7 items-center px-2.5 py-1 text-[10px] font-semibold',
+                                'hover:border-primary/30 hover:text-primary',
+                                'hover:shadow-[0_0_12px_oklch(from_var(--primary)_l_c_h_/_0.15)]',
+                                'transition-[border-color,color,box-shadow] duration-250 ease-out',
+                                'group',
+                              ].join(' ')}
                             >
                               {Icons.ExternalLink}
                               Live Demo
@@ -278,7 +290,13 @@ export const ProjectsSection: React.FC = () => {
                           <Button
                             variant="outline"
                             size="sm"
-                            className="hover:border-primary/30 hover:text-primary group flex h-7 items-center px-2.5 py-1 text-[10px] font-semibold transition-all duration-300 ease-out"
+                            className={[
+                              'flex h-7 items-center px-2.5 py-1 text-[10px] font-semibold',
+                              'hover:border-primary/30 hover:text-primary',
+                              'hover:shadow-[0_0_12px_oklch(from_var(--primary)_l_c_h_/_0.15)]',
+                              'transition-[border-color,color,box-shadow] duration-250 ease-out',
+                              'group',
+                            ].join(' ')}
                           >
                             {Icons.BookOpen}
                             Case Study

@@ -15,5 +15,5 @@ export const siteConfig: SiteConfigType = {
   resumeUrl: '/Amjad_Resume.pdf',
   copyright: `© ${new Date().getFullYear()} Amjad Subhani. All rights reserved.`,
   logoText: 'Amjad Subhani ',
-  siteUrl: import.meta.env.VITE_SITE_URL || 'https://amjad.dev',
+  siteUrl: import.meta.env.VITE_SITE_URL || 'https://portfolio-one-zeta-56.vercel.app',
 };
