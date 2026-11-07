@@ -1,126 +1,117 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useInView } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { cn } from '@/utils/cn';
+
+interface RollingLetterProps {
+  char: string;
+  index: number;
+  inView: boolean;
+  baseDelay: number;
+}
+
+const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+
+// Pick 6-8 random letters that end with the target letter
+const generateReel = (target: string): string[] => {
+  if (target === ' ') return [' '];
+  
+  const isUpper = target === target.toUpperCase() && target !== target.toLowerCase();
+  const pool = isUpper
+    ? 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    : 'abcdefghijklmnopqrstuvwxyz';
+
+  const steps = 7 + (target.charCodeAt(0) % 5);
+  const reel: string[] = [];
+
+  for (let i = 0; i < steps; i++) {
+    const randomChar = pool[Math.floor(Math.random() * pool.length)];
+    reel.push(randomChar);
+  }
+  // Ensure the final landing character is the actual target
+  reel.push(target);
+  return reel;
+};
+
+const RollingLetter: React.FC<RollingLetterProps> = ({ char, index, inView, baseDelay }) => {
+  const reelRef = useRef<string[]>(generateReel(char));
+
+  if (char === ' ') {
+    return <span className="inline-block w-[0.28em]">&nbsp;</span>;
+  }
+
+  const reel = reelRef.current;
+  const targetIndex = reel.length - 1;
+  const charDelay = baseDelay + index * 0.045;
+  const duration = 0.9 + (index % 4) * 0.15;
+
+  return (
+    <span
+      className="relative inline-block overflow-hidden align-top leading-none h-[1.12em]"
+      style={{ verticalAlign: 'top' }}
+    >
+      <motion.span
+        className="flex flex-col items-center select-none"
+        initial={{ y: '0%' }}
+        animate={inView ? { y: `-${(targetIndex / reel.length) * 100}%` } : { y: '0%' }}
+        transition={{
+          duration: duration,
+          delay: charDelay,
+          ease: [0.16, 1, 0.3, 1], // Smooth exponential deceleration (luxury slot reel)
+        }}
+        style={{ willChange: 'transform' }}
+      >
+        {reel.map((item, idx) => (
+          <span
+            key={idx}
+            className={cn(
+              'flex items-center justify-center h-[1.12em] leading-none',
+              idx === targetIndex ? 'opacity-100' : 'opacity-70'
+            )}
+          >
+            {item}
+          </span>
+        ))}
+      </motion.span>
+    </span>
+  );
+};
 
 interface TextScrambleProps {
   text: string;
   className?: string;
-  /** Delay before scramble starts (ms) */
   delay?: number;
-  /** How fast each character resolves (ms per char) */
-  speed?: number;
-  /** Characters used for scrambling */
-  chars?: string;
-  /** Trigger on hover instead of on scroll-into-view */
-  triggerOnHover?: boolean;
 }
 
-const DEFAULT_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*!?<>';
-
 /**
- * TextScramble — reveals text by cycling through random chars, resolving left-to-right.
- * Triggers when the element scrolls into view (or on hover if triggerOnHover=true).
+ * TextScramble (Alphabet Scroll / Slot Reel Effect).
+ * Each character scrolls vertically through real alphabets (no weird symbols)
+ * smoothly landing on the final word, just like premium SaaS reels (Linear / Stripe).
  */
 export const TextScramble: React.FC<TextScrambleProps> = ({
   text,
   className,
-  delay = 0,
-  speed = 40,
-  chars = DEFAULT_CHARS,
-  triggerOnHover = false,
+  delay = 0.2,
 }) => {
-  const [displayed, setDisplayed] = useState<string>(
-    triggerOnHover ? text : text.replace(/\S/g, chars[0])
-  );
-  const [isAnimating, setIsAnimating] = useState(false);
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-60px' });
-  const frameRef = useRef<number | null>(null);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const scramble = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-
-    const length = text.length;
-    let resolved = 0;
-
-    // More iterations per char = longer scramble per letter
-    const iterCounts = Array.from({ length }, (_, i) =>
-      Math.floor(Math.random() * 14) + 10 + i * 2
-    );
-    const iters = Array(length).fill(0);
-    let lastTick = 0;
-
-    // Use timestamp-based throttle so speed prop actually controls visible pace
-    const tick = (timestamp: number) => {
-      if (timestamp - lastTick < speed) {
-        frameRef.current = requestAnimationFrame(tick);
-        return;
-      }
-      lastTick = timestamp;
-
-      let output = '';
-
-      for (let i = 0; i < length; i++) {
-        if (text[i] === ' ') {
-          output += ' ';
-          continue;
-        }
-
-        if (i < resolved) {
-          output += text[i];
-        } else if (iters[i] < iterCounts[i]) {
-          output += chars[Math.floor(Math.random() * chars.length)];
-          iters[i]++;
-        } else {
-          output += text[i];
-          if (i === resolved) resolved++;
-        }
-      }
-
-      setDisplayed(output);
-
-      if (resolved < length) {
-        frameRef.current = requestAnimationFrame(tick);
-      } else {
-        setDisplayed(text);
-        setIsAnimating(false);
-      }
-    };
-
-    timeoutRef.current = setTimeout(() => {
-      frameRef.current = requestAnimationFrame(tick);
-    }, delay);
-  };
-
-  // Trigger on scroll into view
-  useEffect(() => {
-    if (!triggerOnHover && isInView) {
-      scramble();
-    }
-    return () => {
-      if (frameRef.current) cancelAnimationFrame(frameRef.current);
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isInView]);
-
-  const hoverProps = triggerOnHover
-    ? { onMouseEnter: scramble }
-    : {};
+  const containerRef = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(containerRef, { once: true, margin: '-40px' });
 
   return (
     <span
-      ref={ref}
-      className={cn('font-mono tracking-wider', className)}
+      ref={containerRef}
+      className={cn('inline-flex flex-wrap items-center justify-center font-heading', className)}
       aria-label={text}
-      {...hoverProps}
     >
-      {displayed}
+      {text.split('').map((char, index) => (
+        <RollingLetter
+          key={`${char}-${index}`}
+          char={char}
+          index={index}
+          inView={isInView}
+          baseDelay={delay}
+        />
+      ))}
     </span>
   );
 };
 
 TextScramble.displayName = 'TextScramble';
-
