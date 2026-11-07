@@ -1,4 +1,5 @@
 export { GradientText, type GradientTextProps } from './GradientText';
+export { TextScramble } from './TextScramble';
 export { SectionTitle, type SectionTitleProps } from './SectionTitle';
 export { SectionSubtitle, type SectionSubtitleProps } from './SectionSubtitle';
 export { AnimatedText, type AnimatedTextProps } from './AnimatedText';

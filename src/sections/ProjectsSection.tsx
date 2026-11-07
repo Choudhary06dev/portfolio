@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { projects } from '@/data/projects';
 import { Reveal } from '@/components/common/Reveal';
+import { TextScramble } from '@/components/common/TextScramble';
 import { cn } from '@/utils/cn';
 import { motion } from 'framer-motion';
 
@@ -126,7 +127,12 @@ export const ProjectsSection: React.FC = () => {
                 size="4xl"
                 className="text-foreground leading-tight font-extrabold tracking-tight"
               >
-                Featured Projects
+                <TextScramble
+                  text="Featured Projects"
+                  delay={200}
+                  speed={35}
+                  className="text-foreground font-heading text-4xl leading-tight font-extrabold tracking-tight"
+                />
               </Heading>
             </Reveal>
             <Reveal direction="up" delay={0.2} duration={0.7}>
