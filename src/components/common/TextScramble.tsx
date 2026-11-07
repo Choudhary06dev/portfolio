@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { cn } from '@/utils/cn';
 
@@ -9,45 +9,55 @@ interface RollingLetterProps {
   baseDelay: number;
 }
 
-const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-
-// Pick 6-8 random letters that end with the target letter
+// Generates a sequence of clean random letters that ends precisely with the target letter
 const generateReel = (target: string): string[] => {
   if (target === ' ') return [' '];
-  
+
   const isUpper = target === target.toUpperCase() && target !== target.toLowerCase();
   const pool = isUpper
     ? 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     : 'abcdefghijklmnopqrstuvwxyz';
 
-  const steps = 7 + (target.charCodeAt(0) % 5);
+  // 6 to 8 intermediate letters
+  const steps = 6 + (target.charCodeAt(0) % 4);
   const reel: string[] = [];
 
   for (let i = 0; i < steps; i++) {
     const randomChar = pool[Math.floor(Math.random() * pool.length)];
     reel.push(randomChar);
   }
-  // Ensure the final landing character is the actual target
+
+  // Final landing letter
   reel.push(target);
   return reel;
 };
 
 const RollingLetter: React.FC<RollingLetterProps> = ({ char, index, inView, baseDelay }) => {
   const reelRef = useRef<string[]>(generateReel(char));
+  const [isComplete, setIsComplete] = useState(false);
 
   if (char === ' ') {
     return <span className="inline-block w-[0.28em]">&nbsp;</span>;
   }
 
+  // Once the animation lands, render clean single letter (eliminates any subpixel overflow lines)
+  if (isComplete) {
+    return (
+      <span className="relative inline-block select-none leading-none">
+        {char}
+      </span>
+    );
+  }
+
   const reel = reelRef.current;
   const targetIndex = reel.length - 1;
-  const charDelay = baseDelay + index * 0.045;
-  const duration = 0.9 + (index % 4) * 0.15;
+  const charDelay = baseDelay + index * 0.04;
+  const duration = 0.85 + (index % 4) * 0.12;
 
   return (
     <span
-      className="relative inline-block overflow-hidden align-top leading-none h-[1.12em]"
-      style={{ verticalAlign: 'top' }}
+      className="relative inline-block overflow-hidden align-baseline leading-none h-[1.25em]"
+      style={{ verticalAlign: 'baseline' }}
     >
       <motion.span
         className="flex flex-col items-center select-none"
@@ -56,17 +66,17 @@ const RollingLetter: React.FC<RollingLetterProps> = ({ char, index, inView, base
         transition={{
           duration: duration,
           delay: charDelay,
-          ease: [0.16, 1, 0.3, 1], // Smooth exponential deceleration (luxury slot reel)
+          ease: [0.16, 1, 0.3, 1],
+        }}
+        onAnimationComplete={() => {
+          setIsComplete(true);
         }}
         style={{ willChange: 'transform' }}
       >
         {reel.map((item, idx) => (
           <span
             key={idx}
-            className={cn(
-              'flex items-center justify-center h-[1.12em] leading-none',
-              idx === targetIndex ? 'opacity-100' : 'opacity-70'
-            )}
+            className="flex items-center justify-center h-[1.25em] leading-none"
           >
             {item}
           </span>
@@ -83,9 +93,8 @@ interface TextScrambleProps {
 }
 
 /**
- * TextScramble (Alphabet Scroll / Slot Reel Effect).
- * Each character scrolls vertically through real alphabets (no weird symbols)
- * smoothly landing on the final word, just like premium SaaS reels (Linear / Stripe).
+ * TextScramble — Vertical letter reel.
+ * Automatically cleans up on completion so no subpixel lines/artifacts remain above characters.
  */
 export const TextScramble: React.FC<TextScrambleProps> = ({
   text,
