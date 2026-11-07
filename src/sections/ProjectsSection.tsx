@@ -129,8 +129,8 @@ export const ProjectsSection: React.FC = () => {
               >
                 <TextScramble
                   text="Featured Projects"
-                  delay={200}
-                  speed={35}
+                  delay={300}
+                  speed={90}
                   className="text-foreground font-heading text-4xl leading-tight font-extrabold tracking-tight"
                 />
               </Heading>

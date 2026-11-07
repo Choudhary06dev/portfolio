@@ -43,15 +43,23 @@ export const TextScramble: React.FC<TextScrambleProps> = ({
     setIsAnimating(true);
 
     const length = text.length;
-    // Track how many chars are "resolved" (locked in)
     let resolved = 0;
-    // Each char has an independent scramble counter
-    const iterCounts = Array.from({ length }, () =>
-      Math.floor(Math.random() * 8) + 4
+
+    // More iterations per char = longer scramble per letter
+    const iterCounts = Array.from({ length }, (_, i) =>
+      Math.floor(Math.random() * 14) + 10 + i * 2
     );
     const iters = Array(length).fill(0);
+    let lastTick = 0;
 
-    const tick = () => {
+    // Use timestamp-based throttle so speed prop actually controls visible pace
+    const tick = (timestamp: number) => {
+      if (timestamp - lastTick < speed) {
+        frameRef.current = requestAnimationFrame(tick);
+        return;
+      }
+      lastTick = timestamp;
+
       let output = '';
 
       for (let i = 0; i < length; i++) {
@@ -61,14 +69,11 @@ export const TextScramble: React.FC<TextScrambleProps> = ({
         }
 
         if (i < resolved) {
-          // Already resolved — show real char
           output += text[i];
         } else if (iters[i] < iterCounts[i]) {
-          // Still scrambling this position
           output += chars[Math.floor(Math.random() * chars.length)];
           iters[i]++;
         } else {
-          // This char just resolved
           output += text[i];
           if (i === resolved) resolved++;
         }
@@ -118,3 +123,4 @@ export const TextScramble: React.FC<TextScrambleProps> = ({
 };
 
 TextScramble.displayName = 'TextScramble';
+
